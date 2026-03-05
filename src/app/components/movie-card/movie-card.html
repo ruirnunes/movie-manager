@@ -1,6 +1,11 @@
 <div class="movie-card" [routerLink]="['/movies', movie.id]" [ngClass]="movie.status">
     <h3>{{movie.title}}</h3>
     <p>Rating: {{movie.rating}}</p>
-    <p>Status: {{movie.status}}</p>
+    <select [value]="movie.status" (change)="onStatusChange($event)">
+        <option value="to-watch">To Watch</option>
+        <option value="watching">Watching</option>
+        <option value="watched">Watched</option>
+        <option value="skipped">Skipped</option>
+    </select>
     <button (click) = 'onDelete(); $event.stopPropagation()'>Delete</button>
 </div>

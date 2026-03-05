@@ -1,0 +1,91 @@
+<div class="movie-form">
+
+  <h2>{{ isEditMode ? 'Edit Movie' : 'Add Movie' }}</h2>
+
+  <form [formGroup]="movieForm" (ngSubmit)="saveMovie()">
+
+
+    <!-- Title -->
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" formControlName="title">
+
+      @if (movieForm.controls['title'].invalid && movieForm.controls['title'].touched) {
+        <div class="error">
+          Title is required.
+        </div>
+      }
+    </div>
+
+    <!-- Genre -->
+    <div class="form-group">
+      <label>Genre</label>
+      <input type="text" formControlName="genre">
+
+      @if (movieForm.controls['genre'].invalid && movieForm.controls['genre'].touched) {
+        <div class="error">
+          Genre is required.
+        </div>
+      }
+    </div>
+
+    <!-- Release Date -->
+    <div class="form-group">
+      <label>Release Date</label>
+      <input type="date" formControlName="releaseDate">
+
+      @if (movieForm.controls['releaseDate'].errors?.['required'] && movieForm.controls['releaseDate'].touched) {
+        <div class="error">
+          Release Date is required.
+        </div>
+      }
+
+      @if (movieForm.controls['releaseDate'].errors?.['futureDate']) {
+        <div class="error">
+          Release Date cannot be in the future.
+        </div>
+      }
+    </div>
+
+    <!-- Rating -->
+    <div class="form-group">
+      <label>Rating (0–10)</label>
+      <input type="number" formControlName="rating" min="0" max="10">
+
+      @if (movieForm.controls['rating'].invalid && movieForm.controls['rating'].touched) {
+        <div class="error">
+          Rating must be between 0 and 10.
+        </div>
+      }
+    </div>
+
+    <!-- Status -->
+    <div class="form-group">
+      <label>Status</label>
+      <select formControlName="status">
+        <option value="to-watch">To Watch</option>
+        <option value="watching">Watching</option>
+        <option value="watched">Watched</option>
+        <option value="skipped">Skipped</option>
+      </select>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description" rows="4"></textarea>
+
+      @if (movieForm.controls['description'].invalid && movieForm.controls['description'].touched) {
+        <div class="error">
+          Description is required.
+        </div>
+      }
+    </div>
+
+    <button type="submit">
+      {{ isEditMode ? 'Update Movie' : 'Create Movie' }}
+    </button>
+
+  </form>
+
+</div>

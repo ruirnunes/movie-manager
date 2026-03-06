@@ -2,7 +2,10 @@
 <div class="movie-grid">
     @for (movie of toWatchMovies; track movie.id){
         <app-movie-card
-            [movie]="movie">
+            [movie]="movie"
+            (statusChange)="onStatusChange($event)"
+            (favoriteToggle)="onFavoriteToggle($event)"
+            (delete)="onDelete($event)">
         </app-movie-card>
     }
 </div>

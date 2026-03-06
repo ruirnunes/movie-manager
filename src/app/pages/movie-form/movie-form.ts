@@ -71,7 +71,7 @@ export class MovieFormComponent implements OnInit {
     if (this.isEditMode && this.movie) {
       this.movieService.updateMovie({ ...this.movie, ...formValue });
     } else {
-      const newMovie: Movie = { ...formValue, id: crypto.randomUUID() };
+      const newMovie: Movie = { ...formValue, id: crypto.randomUUID(), idFavorited: false };
       this.movieService.addMovie(newMovie);
     }
 

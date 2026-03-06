@@ -24,13 +24,18 @@ export class WatchlistComponent implements OnInit {
     this.toWatchMovies = this.movieService.getMovies().filter(m => m.status === 'to-watch')
   }
 
-  // updateStatus(id: string, newStatus: 'to-watch' | 'watching' | 'watched' | 'skipped') {
-  //   this.movieService.patchMovie(id, { status: newStatus });
-  //   this.loadWatchlist();
-  // }
+  onStatusChange(event: { id: string; status: Movie['status'] }) {
+    this.movieService.patchMovie(event.id, { status: event.status });
+    this.loadWatchlist();
+  }
 
-  // removeMovie(id: string) {
-  //   this.movieService.deleteMovie(id);
-  //   this.loadWatchlist();
-  // }
+  onFavoriteToggle(id: string) {
+    this.movieService.toggleFavorite(id);
+    this.loadWatchlist();
+  }
+
+  onDelete(id: string) {
+    this.movieService.deleteMovie(id);
+    this.loadWatchlist();
+  }
 }

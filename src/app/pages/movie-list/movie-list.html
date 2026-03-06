@@ -2,7 +2,9 @@
     @for (movie of movies; track movie.id){
         <app-movie-card
             [movie]="movie"
-            (delete)="removeMovie($event)">
+            (statusChange)="onStatusChange($event)"
+            (favoriteToggle)="onFavoriteToggle($event)"
+            (delete)="onDelete($event)">
         </app-movie-card>
     }
 </div>

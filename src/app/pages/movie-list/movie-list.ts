@@ -18,11 +18,26 @@ export class MovieListComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movies = this.movieService.getMovies()
+    this.loadMovies();
   }
 
-  removeMovie(id: string){
-    this.movieService.deleteMovie(id)
-    this.movies = this.movieService.getMovies()
+  loadMovies() {
+    this.movies = this.movieService.getMovies();
+  }
+
+  onStatusChange(event: { id: string; status: Movie['status'] }) {
+    this.movieService.patchMovie(event.id, { status: event.status });
+    this.loadMovies(); // atualiza a lista
+  }
+
+  onFavoriteToggle(id: string) {
+    this.movieService.toggleFavorite(id);
+    this.loadMovies();
+  }
+
+  onDelete(id: string) {
+    this.movieService.deleteMovie(id);
+    this.loadMovies();
   }
 }
+

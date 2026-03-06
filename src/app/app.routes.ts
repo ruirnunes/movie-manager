@@ -5,6 +5,7 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail';
 import { MovieFormComponent } from './pages/movie-form/movie-form';
 import { WatchlistComponent } from './pages/watchlist/watchlist';
 import { WatchedlistComponent } from './pages/watchedlist/watchedlist';
+import { FavoritesComponent } from './pages/favorites/favorites';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'movies/edit/:id', component: MovieFormComponent },
   { path: 'movies/:id', component: MovieDetailComponent },
   { path: 'watchlist', component: WatchlistComponent },
-  { path: 'watchedlist', component: WatchedlistComponent }
+  { path: 'watchedlist', component: WatchedlistComponent },
+  { path: 'favorites', component: FavoritesComponent}
 
 ];

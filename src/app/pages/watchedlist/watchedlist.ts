@@ -23,13 +23,18 @@ export class WatchedlistComponent implements OnInit {
     this.watchedMovies = this.movieService.getMovies().filter(m => m.status === 'watched')
   }
 
-  // updateStatus(id: string, newStatus: 'to-watch' | 'watching' | 'watched' | 'skipped'): void {
-  //   this.movieService.patchMovie(id, { status: newStatus });
-  //   this.loadWatched();
-  // }
+  onStatusChange(event: { id: string; status: Movie['status'] }) {
+    this.movieService.patchMovie(event.id, { status: event.status });
+    this.loadWatched();
+  }
 
-  // removeMovie(id: string): void {
-  //   this.movieService.deleteMovie(id);
-  //   this.loadWatched();
-  // }
+  onFavoriteToggle(id: string) {
+    this.movieService.toggleFavorite(id);
+    this.loadWatched();
+  }
+
+  onDelete(id: string) {
+    this.movieService.deleteMovie(id);
+    this.loadWatched();
+  }
 }

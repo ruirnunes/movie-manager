@@ -6,4 +6,5 @@ export interface Movie {
   status: 'to-watch' | 'watching' | 'watched' | 'skipped'
   releaseDate: string
   description: string
+  isFavorite: boolean
 }

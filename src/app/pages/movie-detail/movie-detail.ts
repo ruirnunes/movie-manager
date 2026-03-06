@@ -28,6 +28,13 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
+  toggleFavorite() {
+    if (!this.movie) return;
+    
+    this.movieService.toggleFavorite(this.movie.id);
+    this.movie.isFavorite = !this.movie.isFavorite;
+  }
+
   deleteMovie(){
     if (!this.movie) return
 

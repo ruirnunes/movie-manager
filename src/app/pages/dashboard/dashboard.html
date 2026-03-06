@@ -31,3 +31,15 @@
     </app-kpi-card>
 
 </div>
+
+<h3>Top 3 Favorite Movies</h3>
+<div class="movie-grid">
+  @for (movie of topFavorites; track movie.id) {
+    <app-movie-card
+      [movie]="movie"
+      (statusChange)="onStatusChange($event)"
+      (favoriteToggle)="onFavoriteToggle($event)"
+      (delete)="onDelete($event)">
+    </app-movie-card>
+  }
+</div>

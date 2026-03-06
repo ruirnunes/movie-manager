@@ -1,14 +1,21 @@
 <div class="filter-controls">
-  <label>Filter by Genre:</label>
-  <select (change)="onGenreChange($event)">
-    @for (genre of genres; track genre) {
-      <option [value]="genre">
-        {{ genre }}
-      </option>
-    }
-  </select>
+    <label>Filter by Genre:</label>
+    <select (change)="onGenreChange($event)">
+        @for (genre of genres; track genre) {
+        <option [value]="genre">
+            {{ genre }}
+        </option>
+        }
+    </select>
 
-  <button (click)="toggleSortByRating()">Sort by Rating</button>
+    <button (click)="toggleSortByRating()">Sort by Rating</button>
+    <label for="search">Search by Title:</label>
+    <input 
+        id="search" 
+        type="text" 
+        placeholder="Type a movie title..." 
+        [(ngModel)]="searchTerm" 
+        (input)="applyFilter()">
 </div>
 
 <div class="movie-grid">

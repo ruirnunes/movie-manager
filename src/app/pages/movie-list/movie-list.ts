@@ -22,6 +22,8 @@ export class MovieListComponent implements OnInit {
 
   ratingDesc: boolean = true;
 
+  searchTerm: string = ''
+
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
@@ -40,12 +42,11 @@ export class MovieListComponent implements OnInit {
   }
 
   applyFilter(): void {
-    if (this.selectedGenre === 'All'){
-      this.filteredMovies = this.movies
-      return
-    }
-
-    this.filteredMovies = this.movies.filter(m => m.genre === this.selectedGenre)    
+    this.filteredMovies = this.movies.filter(movie => {
+      const matchesGenre = this.selectedGenre === 'All' || movie.genre === this.selectedGenre;
+      const matchesTitle = movie.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+      return matchesGenre && matchesTitle;
+    });
   }
 
   onGenreChange(event: Event): void {
@@ -68,7 +69,7 @@ export class MovieListComponent implements OnInit {
     this.ratingDesc = !this.ratingDesc;
     this.filteredMovies.sort((a, b) => this.ratingDesc ? b.rating - a.rating : a.rating - b.rating);
   }
-  
+
   onDelete(id: string) {
     this.movieService.deleteMovie(id);
     this.loadMovies();

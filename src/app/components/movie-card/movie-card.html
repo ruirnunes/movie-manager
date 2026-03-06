@@ -8,7 +8,7 @@
         <option value="skipped">Skipped</option>
     </select>
     <button (click)="toggleFavorite(); $event.stopPropagation()">
-        Add/Remove to favorites
+        {{ movie.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
     </button>
     <button (click) = 'onDelete(); $event.stopPropagation()'>Delete</button>
 </div>

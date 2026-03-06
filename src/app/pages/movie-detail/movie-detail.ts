@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Movie } from '../../models/movie';
+import { DateFormatPipe } from '../../pipes/date-format-pipe';
 
 @Component({
   selector: 'app-movie-detail',
-  imports: [RouterLink],
+  imports: [RouterLink,DateFormatPipe],
   templateUrl: './movie-detail.html',
   styleUrl: './movie-detail.css',
 })

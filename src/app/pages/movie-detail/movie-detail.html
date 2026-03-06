@@ -3,7 +3,7 @@
         <h2>{{movie.title}}</h2>
 
         <p><strong>Genre:</strong>{{movie.genre}}</p>
-        <p><strong>Release Date:</strong>{{movie.releaseDate}}</p>
+        <p><strong>Release Date:</strong>{{movie.releaseDate | dateFormat }}</p>
         <p><strong>Rating:</strong>{{movie.rating}}</p>
         <p><strong>Status:</strong>{{movie.status}}</p>
         

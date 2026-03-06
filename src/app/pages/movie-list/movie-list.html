@@ -1,12 +1,15 @@
-<label>Filter by Genre:</label>
+<div class="filter-controls">
+  <label>Filter by Genre:</label>
+  <select (change)="onGenreChange($event)">
+    @for (genre of genres; track genre) {
+      <option [value]="genre">
+        {{ genre }}
+      </option>
+    }
+  </select>
 
-<select (change)="onGenreChange($event)">
-  @for (genre of genres; track genre) {
-    <option [value]="genre">
-      {{ genre }}
-    </option>
-  }
-</select>
+  <button (click)="toggleSortByRating()">Sort by Rating</button>
+</div>
 
 <div class="movie-grid">
     @for (movie of filteredMovies; track movie.id){

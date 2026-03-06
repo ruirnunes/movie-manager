@@ -20,6 +20,8 @@ export class MovieListComponent implements OnInit {
   selectedGenre: string = 'All'
   genres: string[] = []
 
+  ratingDesc: boolean = true;
+
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
@@ -62,6 +64,11 @@ export class MovieListComponent implements OnInit {
     this.loadMovies();
   }
 
+  toggleSortByRating(): void {
+    this.ratingDesc = !this.ratingDesc;
+    this.filteredMovies.sort((a, b) => this.ratingDesc ? b.rating - a.rating : a.rating - b.rating);
+  }
+  
   onDelete(id: string) {
     this.movieService.deleteMovie(id);
     this.loadMovies();

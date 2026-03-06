@@ -1,5 +1,15 @@
+<label>Filter by Genre:</label>
+
+<select (change)="onGenreChange($event)">
+  @for (genre of genres; track genre) {
+    <option [value]="genre">
+      {{ genre }}
+    </option>
+  }
+</select>
+
 <div class="movie-grid">
-    @for (movie of movies; track movie.id){
+    @for (movie of filteredMovies; track movie.id){
         <app-movie-card
             [movie]="movie"
             (statusChange)="onStatusChange($event)"

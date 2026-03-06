@@ -3,10 +3,11 @@ import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCard,CommonModule],
+  imports: [MovieCard,CommonModule,FormsModule ],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
   standalone: true
@@ -14,6 +15,10 @@ import { CommonModule } from '@angular/common';
 export class MovieListComponent implements OnInit {
   
   movies: Movie[] = []
+  filteredMovies: Movie[] = []
+
+  selectedGenre: string = 'All'
+  genres: string[] = []
 
   constructor(private movieService: MovieService) {}
 
@@ -23,6 +28,28 @@ export class MovieListComponent implements OnInit {
 
   loadMovies() {
     this.movies = this.movieService.getMovies();
+
+    const uniqueGenres: string[] = Array.from(new Set(this.movies.map(m => m.genre)))
+    uniqueGenres.sort((a, b) => a.localeCompare(b))
+
+    this.genres = ['All', ... uniqueGenres]
+
+    this.applyFilter()
+  }
+
+  applyFilter(): void {
+    if (this.selectedGenre === 'All'){
+      this.filteredMovies = this.movies
+      return
+    }
+
+    this.filteredMovies = this.movies.filter(m => m.genre === this.selectedGenre)    
+  }
+
+  onGenreChange(event: Event): void {
+    const select = event.target as HTMLSelectElement
+    this.selectedGenre = select.value
+    this.applyFilter()
   }
 
   onStatusChange(event: { id: string; status: Movie['status'] }) {

@@ -1,6 +1,45 @@
+<!-- movie card container -->
 <div class="movie-card" [routerLink]="['/movies', movie.id]" [ngClass]="movie.status">
+    
+    <!-- movie title -->
     <h3>{{movie.title}}</h3>
-    <p>Rating: {{movie.rating}}</p>
-    <p>Status: {{movie.status}}</p>
-    <button (click) = 'onDelete(); $event.stopPropagation()'>Delete</button>
+
+    <!-- basic movie info -->
+    <p class="genre"><strong>Genre:</strong> {{ movie.genre }}</p>
+    <p class="duration"><strong>Duration:</strong> {{ movie.duration }} min</p>
+    <p class="rating">⭐ {{ movie.rating }}</p>
+
+    <!-- status selector and actions -->
+    <div class="status-row">
+
+        <!-- movie status selector -->
+        <select 
+        [value]="movie.status" 
+        (change)="onStatusChange($event)" 
+        (click)="$event.stopPropagation()">
+            <option value="to-watch">To Watch</option>
+            <option value="watching">Watching</option>
+            <option value="watched">Watched</option>
+            <option value="skipped">Skipped</option>
+        </select>
+
+        <!-- card action buttons -->
+        <div class="card-actions">
+
+            <!-- favorite toggle -->
+            <button (click)="toggleFavorite(); $event.stopPropagation()">
+                <span class="material-icons">
+                    {{ movie.isFavorite ? 'favorite' : 'favorite_border' }}
+                </span>
+            </button>
+
+            <!-- delete movie -->
+            <button (click)="onDelete(); $event.stopPropagation()">
+                <span class="material-icons">delete</span>
+            </button>
+
+        </div>
+
+    </div>
+
 </div>

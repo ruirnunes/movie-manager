@@ -1,0 +1,65 @@
+/* container for movie details */
+.movie-detail {
+  background-color: #393E46;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.7);
+  max-width: 600px;
+  margin: 2em auto;
+  color: #DFD0B8;
+  position: relative; 
+}
+
+/* title styling */
+.movie-detail h2{
+  font-size: 2em;
+}
+
+/* paragraph styling */
+.movie-detail p {
+  margin: 0.5em 0;
+  color: #DFD0B8; 
+  font-size: 1em; 
+}
+
+/* strong tag styling for labels */
+.movie-detail p strong {
+  color: #DFD0B8; 
+  font-size: 1.1em; 
+  margin-right: 0.3em; 
+}
+
+/* container for top-right action buttons */
+.movie-actions {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  display: flex;
+  gap: 0.5em;
+}
+
+/* general button styling */
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4em;
+  transition: transform 0.2s;
+}
+
+.icon-button:hover {
+  transform: scale(1.2);
+}
+
+/* specific button colors */
+.icon-button.edit {
+  color: #3498db; 
+}
+
+.icon-button.favorite {
+  color: #f39c12; 
+}
+
+.icon-button.delete {
+  color: #e74c3c; 
+}

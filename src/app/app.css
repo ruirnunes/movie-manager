@@ -1,0 +1,14 @@
+/* app title style */
+h1 {
+  text-align: center;
+  margin: 1em 0;
+  color: #DFD0B8;
+}
+
+/* main view container */
+router-outlet {
+  display: block;
+  padding: 1em;
+  max-width: 1200px;
+  margin: 0 auto;
+}

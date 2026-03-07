@@ -1,0 +1,113 @@
+/* movie card container */
+.movie-card {
+  background-color: #393E46;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  padding: 1em;
+
+  width: 200px;
+  height: 200px;
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* hover effect */
+.movie-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+}
+
+/* movie title */
+.movie-card h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #DFD0B8;
+  text-align: center;
+}
+
+/* movie info text */
+.movie-card p {
+  margin: 0.3em 0;
+  font-size: 0.9em;
+  color: #DFD0B8;
+}
+
+/* status selector and actions row */
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* status dropdown */
+.movie-card select {
+  padding: 0.35em;
+  border-radius: 5px;
+  border: 1px solid #948979;
+  background-color: #393E46;
+  color: #DFD0B8;
+  font-size: 0.85em;
+}
+
+/* action buttons container */
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* action buttons */
+.movie-card button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #DFD0B8;
+  padding: 2px;
+  transition: transform 0.15s ease, color 0.2s ease;
+}
+
+/* button hover effect */
+.movie-card button:hover {
+  transform: scale(1.15);
+  color: #DFD0B8;
+}
+
+/* favorite hover color */
+.movie-card button:first-child:hover {
+  color: #ff4d6d;
+}
+
+/* delete hover color */
+.movie-card button:last-child:hover {
+  color: #e74c3c;
+}
+
+/* material icons size */
+.material-icons {
+  font-size: 20px;
+}
+
+/* status color indicators */
+.movie-card.to-watch {
+  border-left: 5px solid #f1c40f;
+}
+
+.movie-card.watching {
+  border-left: 5px solid #3498db;
+}
+
+.movie-card.watched {
+  border-left: 5px solid #2ecc71;
+}
+
+.movie-card.skipped {
+  border-left: 5px solid #e74c3c;
+}

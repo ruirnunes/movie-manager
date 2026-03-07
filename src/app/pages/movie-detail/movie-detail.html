@@ -1,14 +1,44 @@
+<!-- display movie details only if the movie exists -->
 @if(movie) {
-    <div class="movie-detail">
-        <h2>{{movie.title}}</h2>
+  <div class="movie-detail">
 
-        <p><strong>Genre:</strong>{{movie.genre}}</p>
-        <p><strong>Release Date:</strong>{{movie.releaseDate}}</p>
-        <p><strong>Rating:</strong>{{movie.rating}}</p>
-        <p><strong>Status:</strong>{{movie.status}}</p>
-        
-        <button [routerLink]="['/movies/edit', movie.id]">Edit</button>
-        
-        <button (click)="deleteMovie()">Delete</button>
+    <!-- movie title -->
+    <h2>{{movie.title}}</h2>
+
+    <!-- basic movie information -->
+    <p><strong>Genre: </strong>{{movie.genre}}</p>
+    <p><strong>Release Date: </strong>{{movie.releaseDate | dateFormat}}</p>
+    <p><strong>Duration:</strong> {{movie.duration}} min</p>
+    <p><strong>Director:</strong> {{movie.director}}</p>
+    <p><strong>Cast:</strong> {{movie.cast.join(', ')}}</p>
+    <p><strong>Language:</strong> {{movie.language}}</p>
+    <p><strong>Rating: </strong>{{movie.rating}} ⭐</p>
+    <p><strong>Status: </strong>{{movie.status}}</p>
+    <p><strong>Description: </strong>{{movie.description}}</p>
+
+    <!-- optional notes section -->
+    @if(movie.notes){
+        <p><strong>Notes: </strong>{{movie.notes}}</p>
+    }
+    
+    <!-- action buttons for the movie -->
+    <div class="movie-actions">
+
+      <!-- edit movie -->
+      <button [routerLink]="['/movies/edit', movie.id]" class="icon-button edit">
+        ✏️
+      </button>
+
+      <!-- toggle favorite status -->
+      <button (click)="toggleFavorite()" class="icon-button favorite">
+        {{ movie.isFavorite ? '❤️' : '🤍' }}
+      </button>
+
+      <!-- delete movie -->
+      <button (click)="deleteMovie()" class="icon-button delete">
+        🗑️
+      </button>
+
     </div>
+  </div>
 }

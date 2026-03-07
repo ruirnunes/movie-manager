@@ -1,7 +1,9 @@
 <div class="movie-card" [routerLink]="['/movies', movie.id]" [ngClass]="movie.status">
     
     <h3>{{movie.title}}</h3>
-    <p>Rating: {{movie.rating}}</p>
+    <p class="genre"><strong>Genre:</strong> {{ movie.genre }}</p>
+    <p class="duration"><strong>Duration:</strong> {{ movie.duration }} min</p>
+    <p class="rating">⭐ {{ movie.rating }}</p>
 
     <div class="status-row">
 

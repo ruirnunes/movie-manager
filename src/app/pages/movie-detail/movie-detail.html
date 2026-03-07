@@ -4,9 +4,16 @@
 
     <p><strong>Genre: </strong>{{movie.genre}}</p>
     <p><strong>Release Date: </strong>{{movie.releaseDate | dateFormat}}</p>
-    <p><strong>Rating: </strong>{{movie.rating}}</p>
+    <p><strong>Duration:</strong> {{movie.duration}} min</p>
+    <p><strong>Director:</strong> {{movie.director}}</p>
+    <p><strong>Cast:</strong> {{movie.cast.join(', ')}}</p>
+    <p><strong>Language:</strong> {{movie.language}}</p>
+    <p><strong>Rating: </strong>{{movie.rating}} ⭐</p>
     <p><strong>Status: </strong>{{movie.status}}</p>
     <p><strong>Description: </strong>{{movie.description}}</p>
+    @if(movie.notes){
+        <p><strong>Notes: </strong>{{movie.notes}}</p>
+    }
     
     <div class="movie-actions">
       <!-- Edit -->

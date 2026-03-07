@@ -5,7 +5,9 @@
 
     <div class="status-row">
 
-        <select [value]="movie.status" (change)="onStatusChange($event)">
+        <select [value]="movie.status" 
+        (change)="onStatusChange($event)" 
+        (click)="$event.stopPropagation()">
             <option value="to-watch">To Watch</option>
             <option value="watching">Watching</option>
             <option value="watched">Watched</option>

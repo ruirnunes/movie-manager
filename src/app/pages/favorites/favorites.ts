@@ -24,7 +24,7 @@ export class FavoritesComponent implements OnInit {
     this.favoriteMovies = this.movieService.getMovies().filter(m => m.isFavorite)
   }
 
-    onFavoriteToggle(id: string) {
+  onFavoriteToggle(id: string) {
     this.movieService.toggleFavorite(id); // altera o isFavorite
     this.loadFavorites(); // atualiza a lista de favoritos
   }

@@ -1,0 +1,13 @@
+/* app.css */
+h1 {
+  text-align: center;
+  margin: 1em 0;
+  color: #ffffff;
+}
+
+router-outlet {
+  display: block;
+  padding: 1em;
+  max-width: 1200px;
+  margin: 0 auto; /* centraliza conteudo da dashboard e páginas */
+}

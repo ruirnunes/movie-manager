@@ -46,7 +46,10 @@ export class DashboardComponent implements OnInit {
     this.watchingMovies = this.movies.filter(m => m.status === 'watching').length
 
     this.averageRating = this.movies.length 
-    ? this.movies.reduce((sum,m) => sum + m.rating, 0) / this.movies.length 
+    ? Number(
+      (this.movies.reduce((sum,m) => sum + m.rating, 0) / this.movies.length)
+        .toFixed(2)
+    ) 
     : 0
 
     this.topFavorites = this.movies

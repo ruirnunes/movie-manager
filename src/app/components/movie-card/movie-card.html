@@ -1,14 +1,31 @@
 <div class="movie-card" [routerLink]="['/movies', movie.id]" [ngClass]="movie.status">
+    
     <h3>{{movie.title}}</h3>
     <p>Rating: {{movie.rating}}</p>
-    <select [value]="movie.status" (change)="onStatusChange($event)">
-        <option value="to-watch">To Watch</option>
-        <option value="watching">Watching</option>
-        <option value="watched">Watched</option>
-        <option value="skipped">Skipped</option>
-    </select>
-    <button (click)="toggleFavorite(); $event.stopPropagation()">
-        {{ movie.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
-    </button>
-    <button (click) = 'onDelete(); $event.stopPropagation()'>Delete</button>
+
+    <div class="status-row">
+
+        <select [value]="movie.status" (change)="onStatusChange($event)">
+            <option value="to-watch">To Watch</option>
+            <option value="watching">Watching</option>
+            <option value="watched">Watched</option>
+            <option value="skipped">Skipped</option>
+        </select>
+
+        <div class="card-actions">
+
+            <button (click)="toggleFavorite(); $event.stopPropagation()">
+                <span class="material-icons">
+                    {{ movie.isFavorite ? 'favorite' : 'favorite_border' }}
+                </span>
+            </button>
+
+            <button (click)="onDelete(); $event.stopPropagation()">
+                <span class="material-icons">delete</span>
+            </button>
+
+        </div>
+
+    </div>
+
 </div>

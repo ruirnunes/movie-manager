@@ -1,16 +1,26 @@
 @if(movie) {
-    <div class="movie-detail">
-        <h2>{{movie.title}}</h2>
+  <div class="movie-detail">
+    <h2>{{movie.title}}</h2>
 
-        <p><strong>Genre:</strong>{{movie.genre}}</p>
-        <p><strong>Release Date:</strong>{{movie.releaseDate | dateFormat }}</p>
-        <p><strong>Rating:</strong>{{movie.rating}}</p>
-        <p><strong>Status:</strong>{{movie.status}}</p>
-        
-        <button [routerLink]="['/movies/edit', movie.id]">Edit</button>
-        <button (click)="toggleFavorite()">
-            {{ movie.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
-        </button>
-        <button (click)="deleteMovie()">Delete</button>
+    <p><strong>Genre: </strong>{{movie.genre}}</p>
+    <p><strong>Release Date: </strong>{{movie.releaseDate | dateFormat}}</p>
+    <p><strong>Rating: </strong>{{movie.rating}}</p>
+    <p><strong>Status: </strong>{{movie.status}}</p>
+    <p><strong>Description: </strong>{{movie.description}}</p>
+    
+    <div class="movie-actions">
+      <!-- Edit -->
+      <button [routerLink]="['/movies/edit', movie.id]" class="icon-button edit">
+        ✏️
+      </button>
+      <!-- Favorite -->
+      <button (click)="toggleFavorite()" class="icon-button favorite">
+        {{ movie.isFavorite ? '❤️' : '🤍' }}
+      </button>
+      <!-- Delete -->
+      <button (click)="deleteMovie()" class="icon-button delete">
+        🗑️
+      </button>
     </div>
+  </div>
 }

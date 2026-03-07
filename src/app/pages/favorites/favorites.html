@@ -1,11 +1,12 @@
-<div class="movie-grid">
-
-  @for (movie of favoriteMovies; track movie.id) {
-    <app-movie-card
-        [movie]="movie"
-        (favoriteToggle)="onFavoriteToggle($event)"
-        (delete)="onDelete($event)">>
-    </app-movie-card>
-  }
-
+<div class = "list-container">
+  <h2>Favorites</h2>
+  <div class="movie-grid">
+    @for (movie of favoriteMovies; track movie.id) {
+      <app-movie-card
+          [movie]="movie"
+          (favoriteToggle)="onFavoriteToggle($event)"
+          (delete)="onDelete($event)">>
+      </app-movie-card>
+    }
+  </div>
 </div>

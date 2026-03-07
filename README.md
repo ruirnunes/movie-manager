@@ -59,10 +59,10 @@ The application reloads automatically whenever source files are modified.
 
 ## Project Structure
 
-- `src/app/models/` – TypeScript interfaces for data models (e.g., Movie)
+- `src/app/models/` – TypeScript interfaces for data models (Movie)
 - `src/app/services/` – Services for business logic and LocalStorage persistence
 - `src/app/components/` – Reusable components (MovieCard, KpiCard)
-- `src/app/pages/` – Main pages (Dashboard, Movie List, Watchlist, Watched List)
+- `src/app/pages/` – Main pages (Dashboard, Favorites, Movie details, Movie Form Movie List, Watchlist, Watched List)
 - `src/app/pipes/` – Custom pipe (date formatting)
 
 ## How to Use
@@ -72,20 +72,11 @@ The application reloads automatically whenever source files are modified.
 3. Click a movie to open **Movie Details** and update status or mark as favorite.
 4. Visit **Watchlist** and **Watched List** pages to track your movies.
 
-## Testing
-
-Run unit tests with:
-
-```bash
-ng test
-```
-
 ## Technologies Used
 
 - Angular 21
 - TypeScript
 - LocalStorage for data persistence
-- Vitest for unit testing
 
 ## Additional Resources
 

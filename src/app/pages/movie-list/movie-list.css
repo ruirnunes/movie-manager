@@ -30,12 +30,12 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #3498db;
-  color: #fff;
+  background-color: #393E46;
+  color: #DFD0B8;
   font-weight: bold;
   transition: background-color 0.2s;
 }
 
 .filter-controls button:hover {
-  background-color: #2980b9;
+  background-color: #948979;
 }

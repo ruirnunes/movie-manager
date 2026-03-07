@@ -1,7 +1,7 @@
 /* movie-card.css */
 
 .movie-card {
-  background-color: #1e1e1e;
+  background-color: #393E46;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
   padding: 1em;
@@ -27,15 +27,17 @@
 .movie-card h3 {
   margin-top: 0;
   font-size: 1.1em;
-  color: #ffffff;
+  color: #DFD0B8;
   text-align: center;
 }
 
 .movie-card p {
   margin: 0.3em 0;
   font-size: 0.9em;
-  color: #ccc;
+  color: #DFD0B8;
 }
+
+
 
 /* linha do status + botões */
 
@@ -50,9 +52,9 @@
 .movie-card select {
   padding: 0.35em;
   border-radius: 5px;
-  border: 1px solid #555;
-  background-color: #2b2b2b;
-  color: #ececec;
+  border: 1px solid #948979;
+  background-color: #393E46;
+  color: #DFD0B8;
   font-size: 0.85em;
 }
 
@@ -67,14 +69,14 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #aaa;
+  color: #DFD0B8;
   padding: 2px;
   transition: transform 0.15s ease, color 0.2s ease;
 }
 
 .movie-card button:hover {
   transform: scale(1.15);
-  color: #fff;
+  color: #DFD0B8;
 }
 
 /* favorito */

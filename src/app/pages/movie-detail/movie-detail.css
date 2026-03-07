@@ -1,13 +1,25 @@
 /* movie-detail.css */
 .movie-detail {
-  background-color: #1f1f1f;
+  background-color: #393E46;
   padding: 2em;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.7);
   max-width: 600px;
   margin: 2em auto;
-  color: #ccc;
+  color: #DFD0B8;
   position: relative; /* necessário para posicionar os botões */
+}
+
+.movie-detail p {
+  margin: 0.5em 0;
+  color: #DFD0B8; /* cor dos valores */
+  font-size: 1em; /* tamanho padrão dos valores */
+}
+
+.movie-detail p strong {
+  color: #DFD0B8; /* cor dos nomes dos atributos */
+  font-size: 1.1em; /* ligeiramente maior que o valor */
+  margin-right: 0.3em; /* um pequeno espaço antes do valor */
 }
 
 /* Botões no canto superior direito */

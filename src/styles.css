@@ -1,4 +1,4 @@
-/* styles.css - dark theme global */
+/* global dark theme */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,14 +6,16 @@ body {
   color: #DFD0B8;
 }
 
+/* headings style */
 h1, h2, h3 {
   margin: 0.5em 0;
   color: #DFD0B8;
 }
 
+/* navigation bar */
 nav {
   display: flex;
-  justify-content: center; /* centraliza horizontalmente */
+  justify-content: center; 
   gap: 1.5em;
   background-color: #393E46;
   padding: 1em 0;
@@ -25,13 +27,14 @@ nav a {
   color: #DFD0B8;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.05em
+  font-size: 1.05em;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
+/* horizontal line */
 hr {
   margin: 1.5em auto;
   border: none;
@@ -39,10 +42,11 @@ hr {
   width: 90%;
 }
 
+/* movie cards grid */
 .movie-grid {
   display: flex;
-  flex-wrap: wrap;       /* permite múltiplas linhas */
-  justify-content: center; /* centraliza horizontalmente */
-  gap: 24px;             /* espaço horizontal e vertical entre cards */
+  flex-wrap: wrap;       
+  justify-content: center; 
+  gap: 24px;             
   padding: 1em;
 }

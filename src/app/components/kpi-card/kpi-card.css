@@ -1,4 +1,4 @@
-/* kpi-card.css */
+/* KPI card container */
 .kpi-card {
   background-color: #393E46;
   padding: 1em;
@@ -9,16 +9,19 @@
   transition: transform 0.2s;
 }
 
+/* hover effect */
 .kpi-card:hover {
   transform: translateY(-2px);
 }
 
+/* title styling */
 .kpi-title {
   font-size: 0.95em;
   color: #DFD0B8;
   margin-bottom: 0.3em;
 }
 
+/* value styling */
 .kpi-value {
   font-size: 1.7em;
   font-weight: bold;

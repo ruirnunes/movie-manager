@@ -9,32 +9,36 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   templateUrl: './watchlist.html',
   styleUrl: './watchlist.css',
 })
-
 export class WatchlistComponent implements OnInit {
 
-  toWatchMovies: Movie[] = []
+  // movies with 'to-watch' status
+  toWatchMovies: Movie[] = [];
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.loadWatchlist()
+    this.loadWatchlist();
   }
 
+  // load 'to-watch' movies from service
   loadWatchlist(): void {
-    this.toWatchMovies = this.movieService.getMovies().filter(m => m.status === 'to-watch')
+    this.toWatchMovies = this.movieService.getMovies().filter((m: Movie) => m.status === 'to-watch');
   }
 
-  onStatusChange(event: { id: string; status: Movie['status'] }) {
+  // update movie status
+  onStatusChange(event: { id: string; status: Movie['status'] }): void {
     this.movieService.patchMovie(event.id, { status: event.status });
     this.loadWatchlist();
   }
 
-  onFavoriteToggle(id: string) {
+  // toggle favorite status
+  onFavoriteToggle(id: string): void {
     this.movieService.toggleFavorite(id);
     this.loadWatchlist();
   }
 
-  onDelete(id: string) {
+  // delete movie
+  onDelete(id: string): void {
     this.movieService.deleteMovie(id);
     this.loadWatchlist();
   }

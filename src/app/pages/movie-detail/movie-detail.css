@@ -1,4 +1,4 @@
-/* movie-detail.css */
+/* container for movie details */
 .movie-detail {
   background-color: #393E46;
   padding: 2em;
@@ -7,22 +7,29 @@
   max-width: 600px;
   margin: 2em auto;
   color: #DFD0B8;
-  position: relative; /* necessário para posicionar os botões */
+  position: relative; 
 }
 
+/* title styling */
+.movie-detail h2{
+  font-size: 2em;
+}
+
+/* paragraph styling */
 .movie-detail p {
   margin: 0.5em 0;
-  color: #DFD0B8; /* cor dos valores */
-  font-size: 1em; /* tamanho padrão dos valores */
+  color: #DFD0B8; 
+  font-size: 1em; 
 }
 
+/* strong tag styling for labels */
 .movie-detail p strong {
-  color: #DFD0B8; /* cor dos nomes dos atributos */
-  font-size: 1.1em; /* ligeiramente maior que o valor */
-  margin-right: 0.3em; /* um pequeno espaço antes do valor */
+  color: #DFD0B8; 
+  font-size: 1.1em; 
+  margin-right: 0.3em; 
 }
 
-/* Botões no canto superior direito */
+/* container for top-right action buttons */
 .movie-actions {
   position: absolute;
   top: 1em;
@@ -31,7 +38,7 @@
   gap: 0.5em;
 }
 
-/* Estilo geral para ícones */
+/* general button styling */
 .icon-button {
   background: none;
   border: none;
@@ -44,15 +51,15 @@
   transform: scale(1.2);
 }
 
-/* Cores específicas */
+/* specific button colors */
 .icon-button.edit {
-  color: #3498db; /* lápis azul */
+  color: #3498db; 
 }
 
 .icon-button.favorite {
-  color: #f39c12; /* coração */
+  color: #f39c12; 
 }
 
 .icon-button.delete {
-  color: #e74c3c; /* caixote do lixo */
+  color: #e74c3c; 
 }

@@ -1,21 +1,23 @@
-/* favorites.css, watchedlist.css, watchlist.css, movie-list.css */
+/* Movie grid container */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 220px); /* largura fixa dos cards */
-  justify-content: center; /* centraliza a grid */
+  grid-template-columns: repeat(auto-fit, 220px); 
+  justify-content: center; 
   gap: 2em 2.2em; 
   margin-top: 1em;
 }
 
+/* Filter controls container */
 .filter-controls {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* centraliza horizontalmente */
+  justify-content: center; 
   align-items: center;
   gap: 1em;
   margin-bottom: 1em;
 }
 
+/* Inputs and select styling */
 .filter-controls input,
 .filter-controls select {
   padding: 0.5em 0.7em;
@@ -25,6 +27,7 @@
   color: #ececec;
 }
 
+/* Buttons styling */
 .filter-controls button {
   padding: 0.5em 0.9em;
   border: none;
@@ -36,6 +39,7 @@
   transition: background-color 0.2s;
 }
 
+/* Hover effect for buttons */
 .filter-controls button:hover {
   background-color: #948979;
 }

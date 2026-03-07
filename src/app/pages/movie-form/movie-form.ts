@@ -12,37 +12,49 @@ import { FormGroup, FormControl, Validators, AbstractControl, ReactiveFormsModul
 })
 export class MovieFormComponent implements OnInit {
 
-  movie!: Movie;
-  isEditMode = false;
-  movieForm!: FormGroup;
+  // movie being edited (if any)
+  movie: Movie | undefined = undefined;
+
+  // edit mode flag
+  isEditMode: boolean = false;
+
+  // reactive form group
+  movieForm: FormGroup = new FormGroup({});;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
+    private route: ActivatedRoute,  // access route parameters
+    private router: Router,          // navigate programmatically
     private movieService: MovieService
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    // check if an ID is provided in the route
+    const id: string | null = this.route.snapshot.paramMap.get('id');
 
     if (id) {
-      const existingMovie = this.movieService.getMoviesByID(id);
+      const existingMovie: Movie | undefined = this.movieService.getMoviesByID(id);
       if (existingMovie) {
+        // copy movie to avoid mutating original
         this.movie = { ...existingMovie };
         this.isEditMode = true;
       }
     }
 
+    // initialize reactive form
     this.initForm();
   }
 
-  initForm() {
+  // initialize reactive form controls and validators
+  initForm(): void {
     this.movieForm = new FormGroup({
       title: new FormControl(this.movie?.title || '', [Validators.required]),
       genre: new FormControl(this.movie?.genre || '', [Validators.required]),
       director: new FormControl(this.movie?.director || '', [Validators.required]),
-      duration: new FormControl(this.movie?.duration || 0, [Validators.required, Validators.min(1)]),
-      cast: new FormControl(this.movie?.cast.join(', ') || '', [this.castValidator]),
+      duration: new FormControl(this.movie?.duration || 0, [
+        Validators.required,
+        Validators.min(1) // minimum 1 min
+      ]),
+      cast: new FormControl(this.movie?.cast?.join(', ') || '', [this.castValidator]),
       language: new FormControl(this.movie?.language || '', [Validators.required]),
       releaseDate: new FormControl(this.movie?.releaseDate || '', [
         Validators.required,
@@ -59,52 +71,42 @@ export class MovieFormComponent implements OnInit {
     });
   }
 
-  // Validação customizada: a data não pode ser futura
-  futureDateValidator(control: AbstractControl) {
-    const selected = new Date(control.value);
+  // validate future dates
+  futureDateValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const selected: Date = new Date(control.value);
     return selected > new Date() ? { futureDate: true } : null;
   }
 
-  // Validação customizada para cast
-  castValidator(control: AbstractControl) {
-    const value = control.value as string;
-    if (!value || value.trim() === '') {
-      return { required: true };
-    }
+  // validate cast string
+  castValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const value: string = control.value as string;
+    if (!value || value.trim() === '') return { required: true };
+    if (!value.includes(',')) return { invalidFormat: true };
 
-    // Verifica se contém pelo menos uma vírgula
-    if (!value.includes(',')) {
-      return { invalidFormat: true };
-    }
+    const actors: string[] = value.split(',').map(a => a.trim());
+    if (actors.some(a => a === '')) return { invalidFormat: true };
 
-    // Garante que cada ator tem pelo menos um caracter
-    const actors = value.split(',').map(a => a.trim());
-    if (actors.some(a => a === '')) {
-      return { invalidFormat: true };
-    }
-
-    return null;
+    return null; // valid
   }
 
-  saveMovie() {
-    if (this.movieForm.invalid) {
-      this.movieForm.markAllAsTouched();
+  // save or update movie
+  saveMovie(): void {
+    if (!this.movieForm || this.movieForm.invalid) {
+      this.movieForm?.markAllAsTouched();
       return;
     }
 
-    const formValue = this.movieForm.value;
-    
-    // converter cast de string para array
-    const castArray = formValue.cast.split(',').map((c: string) => c.trim());
+    const formValue: any = this.movieForm.value;
 
-    const movieData: Movie = {
-      ...formValue,
-      cast: castArray
-    };
+    const castArray: string[] = formValue.cast.split(',').map((c: string) => c.trim());
+
+    const movieData: Movie = { ...formValue, cast: castArray };
 
     if (this.isEditMode && this.movie) {
+      // update existing
       this.movieService.updateMovie({ ...this.movie, ...movieData });
     } else {
+      // add new movie
       const newMovie: Movie = { ...movieData, id: crypto.randomUUID(), isFavorite: false };
       this.movieService.addMovie(newMovie);
     }

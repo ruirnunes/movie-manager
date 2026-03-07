@@ -1,34 +1,38 @@
-/* favorites.css, watchedlist.css, watchlist.css, movie-list.css */
+/* container for title and movie grid */
 .list-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centraliza título e grid */
+  align-items: center; 
   margin: 2em 5em;
 }
 
+/* page title style */
 .list-container h2 {
   color: #DFD0B8;
   margin-bottom: 1em;
   text-align: center;
 }
 
+/* grid layout for movies */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* mesma largura que Movie List */
-  gap: 1.5em; /* mesmo espaçamento */
-  justify-items: center; /* centraliza os cards horizontalmente */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+  gap: 1.5em; 
+  justify-items: center; 
   width: 100%;
 }
 
+/* container for filters (if used) */
 .filter-controls {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* centraliza horizontalmente */
+  justify-content: center; 
   align-items: center;
   gap: 1em;
   margin-bottom: 1em;
 }
 
+/* inputs and selects in filter controls */
 .filter-controls input,
 .filter-controls select {
   padding: 0.5em 0.7em;
@@ -38,6 +42,7 @@
   color: #ececec;
 }
 
+/* buttons in filter controls */
 .filter-controls button {
   padding: 0.5em 0.9em;
   border: none;
@@ -49,6 +54,7 @@
   transition: background-color 0.2s;
 }
 
+/* hover effect for filter buttons */
 .filter-controls button:hover {
   background-color: #2980b9;
 }

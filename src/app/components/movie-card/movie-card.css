@@ -1,5 +1,4 @@
-/* movie-card.css */
-
+/* movie card container */
 .movie-card {
   background-color: #393E46;
   border-radius: 10px;
@@ -19,28 +18,28 @@
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* hover effect */
 .movie-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.8);
 }
 
+/* movie title */
 .movie-card h3 {
   margin-top: 0;
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: #DFD0B8;
   text-align: center;
 }
 
+/* movie info text */
 .movie-card p {
   margin: 0.3em 0;
   font-size: 0.9em;
   color: #DFD0B8;
 }
 
-
-
-/* linha do status + botões */
-
+/* status selector and actions row */
 .status-row {
   display: flex;
   align-items: center;
@@ -49,6 +48,7 @@
   width: 100%;
 }
 
+/* status dropdown */
 .movie-card select {
   padding: 0.35em;
   border-radius: 5px;
@@ -58,13 +58,13 @@
   font-size: 0.85em;
 }
 
-/* ícones */
-
+/* action buttons container */
 .card-actions {
   display: flex;
   gap: 8px;
 }
 
+/* action buttons */
 .movie-card button {
   background: none;
   border: none;
@@ -74,29 +74,28 @@
   transition: transform 0.15s ease, color 0.2s ease;
 }
 
+/* button hover effect */
 .movie-card button:hover {
   transform: scale(1.15);
   color: #DFD0B8;
 }
 
-/* favorito */
-
+/* favorite hover color */
 .movie-card button:first-child:hover {
   color: #ff4d6d;
 }
 
-/* delete */
-
+/* delete hover color */
 .movie-card button:last-child:hover {
   color: #e74c3c;
 }
 
+/* material icons size */
 .material-icons {
   font-size: 20px;
 }
 
-/* Status colors */
-
+/* status color indicators */
 .movie-card.to-watch {
   border-left: 5px solid #f1c40f;
 }

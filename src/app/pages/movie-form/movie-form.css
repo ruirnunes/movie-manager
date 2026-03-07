@@ -1,25 +1,28 @@
-/* movie-form.css */
+/* Container for the form */
 .movie-form {
-  max-width: 600px;
-  margin: 2em auto;
-  padding: 2em;
-  background-color: #393E46;
-  border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.7);
+  max-width: 600px;         
+  margin: 2em auto;           
+  padding: 2em;               
+  background-color: #393E46;  
+  border-radius: 10px;        
+  box-shadow: 0 4px 14px rgba(0,0,0,0.7); 
 }
 
+/* Form title */
 .movie-form h2 {
-  text-align: center;
+  text-align: center;        
   margin-bottom: 1.5em;
-  color: #D2C1B6;
+  color: #D2C1B6;            
 }
 
+/* Form group container */
 .form-group {
   margin-bottom: 1.2em;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;     
 }
 
+/* Label styling */
 .form-group label {
   font-weight: bold;
   margin-bottom: 0.3em;
@@ -27,28 +30,31 @@
   font-size: 1.05em;
 }
 
+/* Input, select, and textarea styling */
 .form-group input,
 .form-group select,
 .form-group textarea {
   padding: 0.5em;
   border-radius: 5px;
   border: 1px solid #555;
-  background-color: #222831;
-  color: #DFD0B8;
+  background-color: #222831; 
+  color: #DFD0B8;            
   font-size: 0.95em;
 }
 
+/* Error message */
 .error {
-  color: #e74c3c;
+  color: #e74c3c;             
   font-size: 0.85em;
   margin-top: 0.2em;
 }
 
+/* Submit button */
 button[type="submit"] {
   display: block;
   width: 100%;
   padding: 0.7em;
-  background-color: #2ecc71;
+  background-color: #2ecc71;  
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -58,6 +64,7 @@ button[type="submit"] {
   margin-top: 0.8em;
 }
 
+/* Hover effect for submit button */
 button[type="submit"]:hover {
-  background-color: #27ae60;
+  background-color: #27ae60;  
 }

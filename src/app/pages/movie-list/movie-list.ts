@@ -7,22 +7,31 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-list',
-  imports: [MovieCard,CommonModule,FormsModule ],
+  imports: [MovieCard, CommonModule, FormsModule],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
   standalone: true
 })
+
 export class MovieListComponent implements OnInit {
-  
-  movies: Movie[] = []
-  filteredMovies: Movie[] = []
 
-  selectedGenre: string = 'All'
-  genres: string[] = []
+  // all movies from service
+  movies: Movie[] = [];
 
+  // movies after filtering/search
+  filteredMovies: Movie[] = [];
+
+  // selected genre filter
+  selectedGenre: string = 'All';
+
+  // available genres
+  genres: string[] = [];
+
+  // sort order flag for rating
   ratingDesc: boolean = true;
 
-  searchTerm: string = ''
+  // search term for title filter
+  searchTerm: string = '';
 
   constructor(private movieService: MovieService) {}
 
@@ -30,49 +39,55 @@ export class MovieListComponent implements OnInit {
     this.loadMovies();
   }
 
-  loadMovies() {
+  // load all movies and set genres
+  loadMovies(): void {
     this.movies = this.movieService.getMovies();
 
-    const uniqueGenres: string[] = Array.from(new Set(this.movies.map(m => m.genre)))
-    uniqueGenres.sort((a, b) => a.localeCompare(b))
+    const uniqueGenres: string[] = Array.from(new Set(this.movies.map((m: Movie) => m.genre)));
+    uniqueGenres.sort((a: string, b: string) => a.localeCompare(b));
 
-    this.genres = ['All', ... uniqueGenres]
+    this.genres = ['All', ...uniqueGenres];
 
-    this.applyFilter()
+    this.applyFilter();
   }
 
+  // apply genre and title filters
   applyFilter(): void {
-    this.filteredMovies = this.movies.filter(movie => {
-      const matchesGenre = this.selectedGenre === 'All' || movie.genre === this.selectedGenre;
-      const matchesTitle = movie.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+    this.filteredMovies = this.movies.filter((movie: Movie) => {
+      const matchesGenre: boolean = this.selectedGenre === 'All' || movie.genre === this.selectedGenre;
+      const matchesTitle: boolean = movie.title.toLowerCase().includes(this.searchTerm.toLowerCase());
       return matchesGenre && matchesTitle;
     });
   }
 
+  // handle genre select change
   onGenreChange(event: Event): void {
-    const select = event.target as HTMLSelectElement
-    this.selectedGenre = select.value
-    this.applyFilter()
+    const select: HTMLSelectElement = event.target as HTMLSelectElement;
+    this.selectedGenre = select.value;
+    this.applyFilter();
   }
 
-  onStatusChange(event: { id: string; status: Movie['status'] }) {
+  // handle movie status change
+  onStatusChange(event: { id: string; status: Movie['status'] }): void {
     this.movieService.patchMovie(event.id, { status: event.status });
-    this.loadMovies(); // atualiza a lista
+    this.loadMovies();
   }
 
-  onFavoriteToggle(id: string) {
+  // toggle favorite status
+  onFavoriteToggle(id: string): void {
     this.movieService.toggleFavorite(id);
     this.loadMovies();
   }
 
+  // toggle sorting by rating
   toggleSortByRating(): void {
     this.ratingDesc = !this.ratingDesc;
-    this.filteredMovies.sort((a, b) => this.ratingDesc ? b.rating - a.rating : a.rating - b.rating);
+    this.filteredMovies.sort((a: Movie, b: Movie) => this.ratingDesc ? b.rating - a.rating : a.rating - b.rating);
   }
 
-  onDelete(id: string) {
+  // delete movie
+  onDelete(id: string): void {
     this.movieService.deleteMovie(id);
     this.loadMovies();
   }
 }
-

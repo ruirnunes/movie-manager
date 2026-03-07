@@ -7,69 +7,76 @@ import { Movie } from '../models/movie';
 
 export class MovieService {
 
-  private storageKey: string = "movies"
+  // key for localStorage
+  private storageKey: string = "movies";
 
+  // get all movies
   getMovies(): Movie[] {
-    return JSON.parse(localStorage.getItem(this.storageKey) || '[]' )
+    return JSON.parse(localStorage.getItem(this.storageKey) || '[]') as Movie[];
   }
 
+  // get a movie by ID
   getMoviesByID(id: string): Movie | undefined {
-    const movies: Movie[] = this.getMovies()
-    return movies.find(m => id === m.id)
+    const movies: Movie[] = this.getMovies();
+    return movies.find((m: Movie) => id === m.id);
   }
 
+  // save movie array to localStorage
   saveMovies(movies: Movie[]): void {
-    return localStorage.setItem(this.storageKey, JSON.stringify(movies))
+    localStorage.setItem(this.storageKey, JSON.stringify(movies));
   }
 
+  // add a new movie
   addMovie(movie: Movie): void {
-    const movies: Movie[] = this.getMovies()
-    movies.push(movie)
-    this.saveMovies(movies)
+    const movies: Movie[] = this.getMovies();
+    movies.push(movie);
+    this.saveMovies(movies);
   }
 
+  // delete a movie by ID
   deleteMovie(id: string): void {
-    const movies: Movie[] = this.getMovies()
-    const updatedMovies: Movie[] = movies.filter(m => id !== m.id)
-    this.saveMovies(updatedMovies)
+    const movies: Movie[] = this.getMovies();
+    const updatedMovies: Movie[] = movies.filter((m: Movie) => id !== m.id);
+    this.saveMovies(updatedMovies);
   }
 
+  // update entire movie object
   updateMovie(updatedMovie: Movie): void {
-    
-    const movies: Movie[] = this.getMovies()
-    const index: number = movies.findIndex(m => m.id === updatedMovie.id)
+    const movies: Movie[] = this.getMovies();
+    const index: number = movies.findIndex((m: Movie) => m.id === updatedMovie.id);
 
     if (index !== -1) {
-      movies[index] = updatedMovie
-      this.saveMovies(movies)
+      movies[index] = updatedMovie;
+      this.saveMovies(movies);
     }
   }
 
+  // partially update movie fields
   patchMovie(id: string, changes: Partial<Movie>): void {
-    
-    const movies: Movie[] = this.getMovies()
-    const index: number = movies.findIndex(m => m.id === id)
+    const movies: Movie[] = this.getMovies();
+    const index: number = movies.findIndex((m: Movie) => m.id === id);
 
     if (index !== -1){
       movies[index] = {
         ...movies[index],
         ...changes
-      }
+      };
     }
 
-  this.saveMovies(movies)
+    this.saveMovies(movies);
   }
 
+  // toggle movie favorite status
   toggleFavorite(id: string): void {
-
-    const movie = this.getMoviesByID(id)
+    const movie: Movie | undefined = this.getMoviesByID(id);
 
     if (movie) {
-      this.patchMovie(id, { isFavorite: !movie.isFavorite })
+      this.patchMovie(id, { isFavorite: !movie.isFavorite });
     }
   }
 
-  seedData() {
+  // seed initial data if empty
+  seedData(): void {
     if (!localStorage.getItem(this.storageKey)) {
       const filmesDeExemplo: Movie[] = [
         { id: '1', title: 'Inception', genre: 'Sci-Fi', duration: 148, director: 'Christopher Nolan', cast: ['Leonardo DiCaprio','Joseph Gordon-Levitt','Elliot Page'], rating: 9, status: 'watched', releaseDate: '2010-07-16', language: 'English', description: 'A thief steals corporate secrets through dream-sharing technology.', notes: 'Mind-bending thriller.', isFavorite: false },

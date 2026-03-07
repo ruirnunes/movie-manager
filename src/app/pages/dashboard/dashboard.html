@@ -1,40 +1,43 @@
-<div class = 'kpi-container'>
+<!-- KPI cards container -->
+<div class="kpi-container">
     
     <app-kpi-card
-        title = "Total Movies"
-        [value] = 'totalMovies'>
+        title="Total Movies"
+        [value]='totalMovies'>
     </app-kpi-card>
 
     <app-kpi-card
-        title = "Watched"
-        [value] = 'watchedMovies'>
+        title="Watched"
+        [value]='watchedMovies'>
     </app-kpi-card>
 
     <app-kpi-card
-        title = "To Watch"
-        [value] = 'toWatchMovies'>
+        title="To Watch"
+        [value]='toWatchMovies'>
     </app-kpi-card>
 
     <app-kpi-card
-        title = "Skipped"
-        [value] = 'skippedMovies'>
+        title="Skipped"
+        [value]='skippedMovies'>
     </app-kpi-card>
 
     <app-kpi-card
-        title = "Watching"
-        [value] = 'watchingMovies'>
+        title="Watching"
+        [value]='watchingMovies'>
     </app-kpi-card>
 
     <app-kpi-card
-        title = "Average Rating"
-        [value] = 'averageRating'>
+        title="Average Rating"
+        [value]='averageRating'>
     </app-kpi-card>
 
 </div>
 
-
+<!-- top favorite movies section -->
 <div class="top-favorites">
   <h2>Top 3 Favorite Movies</h2>
+
+  <!-- movie cards grid -->
   <div class="movie-grid">
     @for (movie of topFavorites; track movie.id) {
       <app-movie-card

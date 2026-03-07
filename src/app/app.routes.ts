@@ -7,14 +7,14 @@ import { WatchlistComponent } from './pages/watchlist/watchlist';
 import { WatchedlistComponent } from './pages/watchedlist/watchedlist';
 import { FavoritesComponent } from './pages/favorites/favorites';
 
+// app routes configuration
 export const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'movies', component: MovieListComponent },
-  { path: 'movies/new', component: MovieFormComponent },
-  { path: 'movies/edit/:id', component: MovieFormComponent },
-  { path: 'movies/:id', component: MovieDetailComponent },
-  { path: 'watchlist', component: WatchlistComponent },
-  { path: 'watchedlist', component: WatchedlistComponent },
-  { path: 'favorites', component: FavoritesComponent}
-
+  { path: '', component: DashboardComponent },        // home dashboard
+  { path: 'movies', component: MovieListComponent },  // list all movies
+  { path: 'movies/new', component: MovieFormComponent }, // add new movie
+  { path: 'movies/edit/:id', component: MovieFormComponent }, // edit movie
+  { path: 'movies/:id', component: MovieDetailComponent },    // movie details
+  { path: 'watchlist', component: WatchlistComponent },       // watchlist page
+  { path: 'watchedlist', component: WatchedlistComponent },   // watched movies page
+  { path: 'favorites', component: FavoritesComponent }       // favorites page
 ];

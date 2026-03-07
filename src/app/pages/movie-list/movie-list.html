@@ -1,6 +1,8 @@
+<!-- Filter section -->
 <div class="filter-controls">
     <label>Filter by Genre:</label>
     <select (change)="onGenreChange($event)">
+        <!-- Loop through genres -->
         @for (genre of genres; track genre) {
         <option [value]="genre">
             {{ genre }}
@@ -8,7 +10,10 @@
         }
     </select>
 
+    <!-- Sort button -->
     <button (click)="toggleSortByRating()">Sort by Rating</button>
+
+    <!-- Search input -->
     <label for="search">Search by Title:</label>
     <input 
         id="search" 
@@ -18,7 +23,9 @@
         (input)="applyFilter()">
 </div>
 
+<!-- Movie cards grid -->
 <div class="movie-grid">
+    <!-- Loop through filtered movies -->
     @for (movie of filteredMovies; track movie.id){
         <app-movie-card
             [movie]="movie"

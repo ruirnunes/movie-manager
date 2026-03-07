@@ -1,12 +1,15 @@
+<!-- Container for the watched movies list -->
 <div class="list-container">
   <h2>Watched Movies</h2>
+
+  <!-- Grid for movie cards -->
   <div class="movie-grid">
     @for (movie of watchedMovies; track movie.id){
         <app-movie-card
             [movie]="movie"
-            (statusChange)="onStatusChange($event)"
-            (favoriteToggle)="onFavoriteToggle($event)"
-            (delete)="onDelete($event)">
+            (statusChange)="onStatusChange($event)"  
+            (favoriteToggle)="onFavoriteToggle($event)" 
+            (delete)="onDelete($event)"> 
         </app-movie-card>
     }
   </div>

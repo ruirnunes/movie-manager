@@ -1,37 +1,50 @@
-import { Component, EventEmitter,Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [RouterLink,NgClass ],
+  imports: [RouterLink, NgClass],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
+
 export class MovieCard {
-  @Input() movie!: Movie
-  @Output() statusChange = new EventEmitter<{id:string, status:'to-watch'|'watching'|'watched'|'skipped'}>();
-  @Output() delete = new EventEmitter<string>()
-  @Output() favoriteToggle = new EventEmitter<string>()
+
+  // movie data input
+  @Input() movie!: Movie;
+
+  // event emitted on status change
+  @Output() statusChange = new EventEmitter<{ id: string; status: 'to-watch' | 'watching' | 'watched' | 'skipped' }>();
+
+  // event emitted on delete
+  @Output() delete = new EventEmitter<string>();
+
+  // event emitted on favorite toggle
+  @Output() favoriteToggle = new EventEmitter<string>();
 
   constructor(private router: Router) {}
 
-  goToDetail() {
-    this.router.navigate(['/movies', this.movie.id])
-  }
-  
-  onDelete(){
-    this.delete.emit(this.movie.id)
+  // navigate to movie details page
+  goToDetail(): void {
+    this.router.navigate(['/movies', this.movie.id]);
   }
 
-  onStatusChange(event: Event) {
-    const newStatus = (event.target as HTMLSelectElement).value as Movie['status'];
+  // emit delete event
+  onDelete(): void {
+    this.delete.emit(this.movie.id);
+  }
+
+  // emit status change event
+  onStatusChange(event: Event): void {
+    const newStatus: Movie['status'] = (event.target as HTMLSelectElement).value as Movie['status'];
     if (!this.movie) return;
     this.statusChange.emit({ id: this.movie.id, status: newStatus });
   }
 
-  toggleFavorite(){
-    this.favoriteToggle.emit(this.movie.id)
+  // emit favorite toggle event
+  toggleFavorite(): void {
+    this.favoriteToggle.emit(this.movie.id);
   }
 }

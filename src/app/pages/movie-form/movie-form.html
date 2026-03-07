@@ -1,5 +1,6 @@
 <div class="movie-form">
 
+  <!-- Form title: Add or Edit -->
   <h2>{{ isEditMode ? 'Edit Movie' : 'Add Movie' }}</h2>
 
   <form [formGroup]="movieForm" (ngSubmit)="saveMovie()">
@@ -114,6 +115,7 @@
       <textarea formControlName="notes" rows="3"></textarea>
     </div>
 
+    <!-- Submit button -->
     <button type="submit">{{ isEditMode ? 'Update Movie' : 'Create Movie' }}</button>
   </form>
 </div>

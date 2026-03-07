@@ -1,25 +1,25 @@
-/* dashboard.css - ajuste para centralizar top 3 favorites */
+/* KPI cards container */
 .kpi-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* centraliza horizontalmente */
-  gap: 1em;
-  margin-bottom: 2em;
+  justify-content: center; 
+  gap: 1em; 
+  margin-bottom: 2em; 
 }
 
-/* Container para o top 3 favoritos */
+/* Top favorites section container */
 .top-favorites {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* centraliza tudo dentro do container */
-  margin-top: 2em;
-  gap: 1em;
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 2em; 
+  gap: 1em; 
 }
 
-/* Grid dos cards */
+/* Grid layout for the top favorite movie cards */
 .top-favorites .movie-grid {
   display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  gap: 1em; /* espaçamento entre os cards */
-  flex-wrap: nowrap; /* mantém 3 cards numa linha */
+  justify-content: center; 
+  gap: 1em; 
+  flex-wrap: nowrap; 
 }

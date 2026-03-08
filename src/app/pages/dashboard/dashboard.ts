@@ -31,8 +31,8 @@ export class DashboardComponent implements OnInit {
 
   // initialize dashboard data
   ngOnInit(): void {
-    this.loadKpis();
     this.movieService.seedData();
+    this.loadKpis();
   }
 
   // calculate KPI values

@@ -36,7 +36,7 @@ The goal of this project is to consolidate skills in JavaScript, TypeScript, and
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/movie-manager.git
+git clone https://github.com/ruirnunes/movie-manager.git
 cd movie-manager
 ```
 

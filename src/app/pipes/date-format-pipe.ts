@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DateFormatPipe implements PipeTransform {
   
   // transform date to specified format
-  transform(value: string | Date, format: string = 'dd/MM/yyyy'): string {
+  transform(value: string | Date, format = 'dd/MM/yyyy'): string {
     if (!value) return '';
 
     const date: Date = typeof value === 'string' ? new Date(value) : value;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
@@ -9,28 +9,26 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
 })
-
 export class FavoritesComponent implements OnInit {
+  private movieService = inject(MovieService);
 
   // array that stores the favorite movies
-  favoriteMovies: Movie[] = []
-
-  constructor(private movieService: MovieService) {}
+  favoriteMovies: Movie[] = [];
 
   ngOnInit(): void {
     // load favorite movies when component initializes
-    this.loadFavorites()
+    this.loadFavorites();
   }
 
   // retrieves only the movies marked as favorite
   loadFavorites(): void {
-    this.favoriteMovies = this.movieService.getMovies().filter(m => m.isFavorite)
+    this.favoriteMovies = this.movieService.getMovies().filter((m) => m.isFavorite);
   }
 
   // toggles favorite status and refreshes the list
   onFavoriteToggle(id: string) {
-    this.movieService.toggleFavorite(id); 
-    this.loadFavorites(); 
+    this.movieService.toggleFavorite(id);
+    this.loadFavorites();
   }
 
   // deletes a movie and refreshes the favorites list

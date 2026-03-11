@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
@@ -10,11 +10,10 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   styleUrl: './watchlist.css',
 })
 export class WatchlistComponent implements OnInit {
+  private movieService = inject(MovieService);
 
   // movies with 'to-watch' status
   toWatchMovies: Movie[] = [];
-
-  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.loadWatchlist();
@@ -22,7 +21,9 @@ export class WatchlistComponent implements OnInit {
 
   // load 'to-watch' movies from service
   loadWatchlist(): void {
-    this.toWatchMovies = this.movieService.getMovies().filter((m: Movie) => m.status === 'to-watch');
+    this.toWatchMovies = this.movieService
+      .getMovies()
+      .filter((m: Movie) => m.status === 'to-watch');
   }
 
   // update movie status

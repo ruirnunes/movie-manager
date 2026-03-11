@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../../services/movie';
 import { Movie } from '../../models/movie';
-import { FormGroup, FormControl, Validators, AbstractControl, ReactiveFormsModule } from '@angular/forms';
+import { MovieFormValue } from '../../models/movieForm';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-movie-form',
@@ -11,21 +18,18 @@ import { FormGroup, FormControl, Validators, AbstractControl, ReactiveFormsModul
   styleUrls: ['./movie-form.css'],
 })
 export class MovieFormComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private movieService = inject(MovieService);
 
   // movie being edited (if any)
   movie: Movie | undefined = undefined;
 
   // edit mode flag
-  isEditMode: boolean = false;
+  isEditMode = false;
 
   // reactive form group
-  movieForm: FormGroup = new FormGroup({});;
-
-  constructor(
-    private route: ActivatedRoute,  // access route parameters
-    private router: Router,          // navigate programmatically
-    private movieService: MovieService
-  ) {}
+  movieForm: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
     // check if an ID is provided in the route
@@ -52,39 +56,39 @@ export class MovieFormComponent implements OnInit {
       director: new FormControl(this.movie?.director || '', [Validators.required]),
       duration: new FormControl(this.movie?.duration || 0, [
         Validators.required,
-        Validators.min(1) // minimum 1 min
+        Validators.min(1), // minimum 1 min
       ]),
       cast: new FormControl(this.movie?.cast?.join(', ') || '', [this.castValidator]),
       language: new FormControl(this.movie?.language || '', [Validators.required]),
       releaseDate: new FormControl(this.movie?.releaseDate || '', [
         Validators.required,
-        this.futureDateValidator
+        this.futureDateValidator,
       ]),
       rating: new FormControl(this.movie?.rating || 0, [
         Validators.required,
         Validators.min(0),
-        Validators.max(10)
+        Validators.max(10),
       ]),
       status: new FormControl(this.movie?.status || 'skipped'),
       description: new FormControl(this.movie?.description || '', [Validators.required]),
-      notes: new FormControl(this.movie?.notes || '')
+      notes: new FormControl(this.movie?.notes || ''),
     });
   }
 
   // validate future dates
-  futureDateValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  futureDateValidator(control: AbstractControl): Record<string, boolean> | null {
     const selected: Date = new Date(control.value);
     return selected > new Date() ? { futureDate: true } : null;
   }
 
   // validate cast string
-  castValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  castValidator(control: AbstractControl): Record<string, boolean> | null {
     const value: string = control.value as string;
     if (!value || value.trim() === '') return { required: true };
     if (!value.includes(',')) return { invalidFormat: true };
 
-    const actors: string[] = value.split(',').map(a => a.trim());
-    if (actors.some(a => a === '')) return { invalidFormat: true };
+    const actors: string[] = value.split(',').map((a) => a.trim());
+    if (actors.some((a) => a === '')) return { invalidFormat: true };
 
     return null; // valid
   }
@@ -96,11 +100,25 @@ export class MovieFormComponent implements OnInit {
       return;
     }
 
-    const formValue: any = this.movieForm.value;
+    const formValue: MovieFormValue = this.movieForm.value;
 
     const castArray: string[] = formValue.cast.split(',').map((c: string) => c.trim());
 
-    const movieData: Movie = { ...formValue, cast: castArray };
+    const movieData: Movie = {
+      id: crypto.randomUUID(),       // gera id único
+      title: formValue.title,
+      genre: formValue.genre,
+      duration: formValue.duration,
+      director: formValue.director,
+      cast: castArray,
+      rating: formValue.rating,
+      status: 'to-watch',            // valor default
+      releaseDate: formValue.releaseDate,
+      language: formValue.language,
+      description: formValue.description,
+      notes: formValue.notes,
+      isFavorite: false               // valor default
+    };
 
     if (this.isEditMode && this.movie) {
       // update existing

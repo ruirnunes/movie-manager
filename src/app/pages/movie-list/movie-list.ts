@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
   imports: [MovieCard, CommonModule, FormsModule],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
-  standalone: true
+  standalone: true,
 })
-
 export class MovieListComponent implements OnInit {
+  private movieService = inject(MovieService);
 
   // all movies from service
   movies: Movie[] = [];
@@ -22,18 +22,16 @@ export class MovieListComponent implements OnInit {
   filteredMovies: Movie[] = [];
 
   // selected genre filter
-  selectedGenre: string = 'All';
+  selectedGenre = 'All';
 
   // available genres
   genres: string[] = [];
 
   // sort order flag for rating
-  ratingDesc: boolean = true;
+  ratingDesc = true;
 
   // search term for title filter
-  searchTerm: string = '';
-
-  constructor(private movieService: MovieService) {}
+  searchTerm = '';
 
   ngOnInit(): void {
     this.loadMovies();
@@ -54,8 +52,11 @@ export class MovieListComponent implements OnInit {
   // apply genre and title filters
   applyFilter(): void {
     this.filteredMovies = this.movies.filter((movie: Movie) => {
-      const matchesGenre: boolean = this.selectedGenre === 'All' || movie.genre === this.selectedGenre;
-      const matchesTitle: boolean = movie.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const matchesGenre: boolean =
+        this.selectedGenre === 'All' || movie.genre === this.selectedGenre;
+      const matchesTitle: boolean = movie.title
+        .toLowerCase()
+        .includes(this.searchTerm.toLowerCase());
       return matchesGenre && matchesTitle;
     });
   }
@@ -82,7 +83,9 @@ export class MovieListComponent implements OnInit {
   // toggle sorting by rating
   toggleSortByRating(): void {
     this.ratingDesc = !this.ratingDesc;
-    this.filteredMovies.sort((a: Movie, b: Movie) => this.ratingDesc ? b.rating - a.rating : a.rating - b.rating);
+    this.filteredMovies.sort((a: Movie, b: Movie) =>
+      this.ratingDesc ? b.rating - a.rating : a.rating - b.rating,
+    );
   }
 
   // delete movie

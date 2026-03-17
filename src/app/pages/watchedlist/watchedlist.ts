@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
@@ -9,13 +9,11 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   templateUrl: './watchedlist.html',
   styleUrl: './watchedlist.css',
 })
-
 export class WatchedlistComponent implements OnInit {
+  private movieService = inject(MovieService);
 
   // movies with 'watched' status
   watchedMovies: Movie[] = [];
-
-  constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.loadWatched();

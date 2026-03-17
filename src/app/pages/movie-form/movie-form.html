@@ -7,8 +7,8 @@
 
     <!-- Title -->
     <div class="form-group">
-      <label>Title</label>
-      <input type="text" formControlName="title">
+      <label for="title">Title</label>
+      <input id="title" type="text" formControlName="title">
       @if (movieForm.controls['title'].invalid && movieForm.controls['title'].touched) {
         <div class="error">Title is required.</div>
       }
@@ -16,8 +16,8 @@
 
     <!-- Genre -->
     <div class="form-group">
-      <label>Genre</label>
-      <input type="text" formControlName="genre">
+      <label for="genre">Genre</label>
+      <input id="genre" type="text" formControlName="genre">
       @if (movieForm.controls['genre'].invalid && movieForm.controls['genre'].touched) {
         <div class="error">Genre is required.</div>
       }
@@ -25,8 +25,8 @@
 
     <!-- Director -->
     <div class="form-group">
-      <label>Director</label>
-      <input type="text" formControlName="director">
+      <label for="director">Director</label>
+      <input id="director" type="text" formControlName="director">
       @if (movieForm.controls['director'].invalid && movieForm.controls['director'].touched) {
         <div class="error">Director is required.</div>
       }
@@ -34,8 +34,8 @@
 
     <!-- Duration -->
     <div class="form-group">
-      <label>Duration (minutes)</label>
-      <input type="number" formControlName="duration" min="1">
+      <label for="duration">Duration (minutes)</label>
+      <input id="duration" type="number" formControlName="duration" min="1">
       @if (movieForm.controls['duration'].invalid && movieForm.controls['duration'].touched) {
         <div class="error">Duration must be at least 1 minute.</div>
       }
@@ -43,8 +43,8 @@
 
     <!-- Cast -->
     <div class="form-group">
-      <label>Cast (separate names with commas)</label>
-      <input type="text" formControlName="cast">
+      <label for="cast">Cast (separate names with commas)</label>
+      <input id="cast" type="text" formControlName="cast">
 
       @if (movieForm.controls['cast'].errors?.['required'] && movieForm.controls['cast'].touched) {
         <div class="error">
@@ -61,8 +61,8 @@
 
     <!-- Language -->
     <div class="form-group">
-      <label>Language</label>
-      <input type="text" formControlName="language">
+      <label for="language">Language</label>
+      <input id="language" type="text" formControlName="language">
       @if (movieForm.controls['language'].invalid && movieForm.controls['language'].touched) {
         <div class="error">Language is required.</div>
       }
@@ -70,8 +70,8 @@
 
     <!-- Release Date -->
     <div class="form-group">
-      <label>Release Date</label>
-      <input type="date" formControlName="releaseDate">
+      <label for="releaseDate">Release Date</label>
+      <input id="releaseDate" type="date" formControlName="releaseDate">
       @if (movieForm.controls['releaseDate'].errors?.['required'] && movieForm.controls['releaseDate'].touched) {
         <div class="error">Release Date is required.</div>
       }
@@ -82,8 +82,8 @@
 
     <!-- Rating -->
     <div class="form-group">
-      <label>Rating (0–10)</label>
-      <input type="number" formControlName="rating" min="0" max="10">
+      <label for="rating">Rating (0–10)</label>
+      <input id="rating" type="number" formControlName="rating" min="0" max="10">
       @if (movieForm.controls['rating'].invalid && movieForm.controls['rating'].touched) {
         <div class="error">Rating must be between 0 and 10.</div>
       }
@@ -91,8 +91,8 @@
 
     <!-- Status -->
     <div class="form-group">
-      <label>Status</label>
-      <select formControlName="status">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status">
         <option value="to-watch">To Watch</option>
         <option value="watching">Watching</option>
         <option value="watched">Watched</option>
@@ -102,8 +102,8 @@
 
     <!-- Description -->
     <div class="form-group">
-      <label>Description</label>
-      <textarea formControlName="description" rows="4"></textarea>
+      <label for="description">Description</label>
+      <textarea id ="description" formControlName="description" rows="4"></textarea>
       @if (movieForm.controls['description'].invalid && movieForm.controls['description'].touched) {
         <div class="error">Description is required.</div>
       }
@@ -111,8 +111,8 @@
 
     <!-- Notes -->
     <div class="form-group">
-      <label>Notes (optional)</label>
-      <textarea formControlName="notes" rows="3"></textarea>
+      <label for="notes">Notes (optional)</label>
+      <textarea id= "notes" formControlName="notes" rows="3"></textarea>
     </div>
 
     <!-- Submit button -->

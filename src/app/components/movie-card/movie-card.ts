@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
@@ -9,22 +9,23 @@ import { NgClass } from '@angular/common';
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
-
 export class MovieCard {
+  private router = inject(Router);
 
   // movie data input
   @Input() movie!: Movie;
 
   // event emitted on status change
-  @Output() statusChange = new EventEmitter<{ id: string; status: 'to-watch' | 'watching' | 'watched' | 'skipped' }>();
+  @Output() statusChange = new EventEmitter<{
+    id: string;
+    status: 'to-watch' | 'watching' | 'watched' | 'skipped';
+  }>();
 
   // event emitted on delete
   @Output() delete = new EventEmitter<string>();
 
   // event emitted on favorite toggle
   @Output() favoriteToggle = new EventEmitter<string>();
-
-  constructor(private router: Router) {}
 
   // navigate to movie details page
   goToDetail(): void {

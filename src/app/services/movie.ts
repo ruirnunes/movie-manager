@@ -9,7 +9,7 @@ import { seedMovies } from '../data/seed-movies';
 export class MovieService {
 
   // key for localStorage
-  private storageKey: string = "movies";
+  private storageKey = "movies";
 
   // get all movies
   getMovies(): Movie[] {

@@ -6,10 +6,13 @@ import { MovieFormComponent } from './pages/movie-form/movie-form';
 import { WatchlistComponent } from './pages/watchlist/watchlist';
 import { WatchedlistComponent } from './pages/watchedlist/watchedlist';
 import { FavoritesComponent } from './pages/favorites/favorites';
+import { AuthComponent } from './pages/authenticator/authenticator';
 
 // app routes configuration
 export const routes: Routes = [
-  { path: '', component: DashboardComponent },        // home dashboard
+  { path: '', component: AuthComponent },       
+  { path: 'auth', component: AuthComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'movies', component: MovieListComponent },  // list all movies
   { path: 'movies/new', component: MovieFormComponent }, // add new movie
   { path: 'movies/edit/:id', component: MovieFormComponent }, // edit movie

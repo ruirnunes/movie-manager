@@ -1,7 +1,7 @@
 <!-- Filter section -->
 <div class="filter-controls">
-    <label>Filter by Genre:</label>
-    <select (change)="onGenreChange($event)">
+    <label for="search">Filter by Genre:</label>
+    <select id="search" (change)="onGenreChange($event)">
         <!-- Loop through genres -->
         @for (genre of genres; track genre) {
         <option [value]="genre">

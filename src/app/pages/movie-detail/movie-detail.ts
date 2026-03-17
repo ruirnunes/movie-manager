@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MovieService } from '../../services/movie';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Movie } from '../../models/movie';
@@ -11,18 +11,14 @@ import { DateFormatPipe } from '../../pipes/date-format-pipe';
   styleUrl: './movie-detail.css',
 })
 export class MovieDetailComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private movieService = inject(MovieService);
 
   // movie object to display in the details page
   movie: Movie | undefined = undefined;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private movieService: MovieService
-  ) {}
-
   ngOnInit(): void {
-
     // retrieve movie id from route parameters
     const id: string | null = this.route.snapshot.paramMap.get('id');
 
@@ -35,7 +31,7 @@ export class MovieDetailComponent implements OnInit {
   // toggle favorite status
   toggleFavorite(): void {
     if (!this.movie) return;
-    
+
     this.movieService.toggleFavorite(this.movie.id);
     this.movie.isFavorite = !this.movie.isFavorite;
   }

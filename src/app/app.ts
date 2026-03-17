@@ -7,6 +7,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css' 
 })
+
 export class AppComponent {
   // app title signal
   protected readonly title = signal<string>('movie-manager');

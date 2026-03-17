@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie';
 import { KpiCard } from '../../components/kpi-card/kpi-card';
@@ -10,24 +10,22 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-
 export class DashboardComponent implements OnInit {
+  private movieService = inject(MovieService);
 
   // movie data
   movies: Movie[] = [];
 
   // KPI values
-  totalMovies: number = 0;
-  watchedMovies: number = 0;
-  toWatchMovies: number = 0;
-  skippedMovies: number = 0;
-  watchingMovies: number = 0;
-  averageRating: number = 0;
+  totalMovies = 0;
+  watchedMovies = 0;
+  toWatchMovies = 0;
+  skippedMovies = 0;
+  watchingMovies = 0;
+  averageRating = 0;
 
   // top favorite movies
   topFavorites: Movie[] = [];
-
-  constructor(private movieService: MovieService) {}
 
   // initialize dashboard data
   ngOnInit(): void {
@@ -37,7 +35,6 @@ export class DashboardComponent implements OnInit {
 
   // calculate KPI values
   loadKpis(): void {
-
     this.movies = this.movieService.getMovies();
 
     this.totalMovies = this.movies.length;
@@ -53,16 +50,15 @@ export class DashboardComponent implements OnInit {
     this.averageRating = this.movies.length
       ? Number(
           (
-            this.movies.reduce((sum: number, m: Movie) => sum + m.rating, 0) /
-            this.movies.length
-          ).toFixed(2)
+            this.movies.reduce((sum: number, m: Movie) => sum + m.rating, 0) / this.movies.length
+          ).toFixed(2),
         )
       : 0;
 
     this.topFavorites = this.movies
-      .filter((m: Movie) => m.isFavorite)        
-      .sort((a: Movie, b: Movie) => b.rating - a.rating) 
-      .slice(0, 3);                              
+      .filter((m: Movie) => m.isFavorite)
+      .sort((a: Movie, b: Movie) => b.rating - a.rating)
+      .slice(0, 3);
   }
 
   // handle movie status change

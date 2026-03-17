@@ -9,8 +9,9 @@ jobs:
   build-and-lint:
     runs-on: ubuntu-latest
     env:
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      API_URL: ${{ secrets.API_URL }}
+      # SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      # SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
     steps:
       - name: Checkout do código
         uses: actions/checkout@v5
@@ -35,6 +36,7 @@ jobs:
             production: false,
             supabaseUrl: '${SUPABASE_URL}',
             supabaseKey: '${SUPABASE_KEY}',
+            apiUrl: '${API_URL}'
           };
           EOF
       - name: Executar lint

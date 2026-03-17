@@ -1,6 +1,136 @@
 {
-  "movies": [
-    { "id": 1, "name": "Libertino" },
-    { "id": 2, "name": "Evaristo" }
+  "users": [
+    {
+      "id": "1",
+      "name": "Test",
+      "email": "test@test.com",
+      "password": "1234"
+    },
+    {
+      "id": "1b0d32fb-4847-4740-ab85-75755a4bd212",
+      "name": "Rui Nunes",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "94786593-436b-4c4e-92d7-e91faedd3ef4",
+      "name": "rui",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "12"
+    },
+    {
+      "id": "d15bbbb8-cc2d-494b-a349-d61d49779b3c",
+      "name": "r",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "1"
+    },
+    {
+      "id": "6c9fc1df-d3bf-41b9-b4cb-808f7923da0b",
+      "name": "e",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "9"
+    },
+    {
+      "id": "49d46af3-d950-49bd-b8b7-caa2ae8437c2",
+      "name": "q",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "8"
+    },
+    {
+      "id": "28d25d00-8c70-4330-838a-50789c6b4c7c",
+      "name": "s",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "5"
+    },
+    {
+      "id": "689519b4-9a7b-4081-9fb6-3e385c138a45",
+      "name": "w",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "98"
+    },
+    {
+      "id": "19e55990-e022-484e-a437-9da8e1765b61",
+      "name": "s",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "99"
+    },
+    {
+      "id": "c236b86d-3400-420e-ab5e-9a5f2aebd0e7",
+      "name": "dw",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "999"
+    },
+    {
+      "id": "2ad6a848-b90f-42b2-8965-b81ade7318bb",
+      "name": "wdqq",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "dfed"
+    },
+    {
+      "id": "b43a20b7-eb6c-4ea2-9ba5-4d90bde9e9e6",
+      "name": "d",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "98465qwd"
+    },
+    {
+      "id": "a5331b08-d435-4eef-8584-92ba8bd39423",
+      "name": "e",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "540818c6-62ca-4ce1-beb4-0c0c85a9c126",
+      "name": "ewfsad",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "45648465465c"
+    },
+    {
+      "id": "8daf0bcf-0514-497b-bd0e-19032835e054",
+      "name": "rew",
+      "email": "rui.r.b.nunes@gmail.com",
+      "password": "23"
+    },
+    {
+      "id": "09b7c32c-5d33-44e7-8449-830caf7ce5ac",
+      "name": "fwfwefwe",
+      "email": "fweffasf",
+      "password": "fasdfweaf"
+    },
+    {
+      "id": "2c2e6925-0db3-4880-b172-736e201d1e7d",
+      "name": "dqwdqwdqw",
+      "email": "dwqdqwd",
+      "password": "dqwdqwd"
+    },
+    {
+      "id": "18222900-f909-4b3a-b050-6a7b45333441",
+      "name": "fwefqe",
+      "email": "dasfas",
+      "password": "fasfas"
+    },
+    {
+      "id": "c2368fab-3d88-41f7-845d-693f21468db1",
+      "name": "qefqwf",
+      "email": "dwqf",
+      "password": "fqwfq"
+    },
+    {
+      "id": "2c18af25-2e77-4f7e-85c6-1b5d0a2a9d18",
+      "name": "evewgv",
+      "email": "erwg",
+      "password": "gwerg"
+    },
+    {
+      "id": "e94181ea-d154-4d9d-b92a-43480ff4636e",
+      "name": "wqw",
+      "email": "wqw",
+      "password": "wqw"
+    },
+    {
+      "id": "badcef4f-6cec-428c-9c65-11751b6d7f35",
+      "name": "q",
+      "email": "q",
+      "password": "q"
+    }
   ]
 }

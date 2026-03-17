@@ -1,0 +1,94 @@
+/* container central */
+.auth-container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 2rem;
+
+  background-color: #393E46;
+  border-radius: 10px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  text-align: center;
+}
+
+/* title */
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  color: #DFD0B8;
+}
+
+/* form layout */
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* labels */
+.auth-container label {
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    color: #948979;
+}
+
+/* inputs */
+.auth-container input {
+  width: 95%;
+  padding: 10px;
+
+  background-color: #222831;
+  border: 1px solid #948979;
+  border-radius: 6px;
+
+  color: #DFD0B8;
+  font-size: 0.95rem;
+}
+
+.auth-container input:focus {
+  outline: none;
+  border-color: #DFD0B8;
+}
+
+/* main button */
+.auth-container button[type="submit"] {
+  margin-top: 0.5rem;
+  padding: 10px;
+
+  background-color: #948979;
+  border: none;
+  border-radius: 6px;
+
+  color: #222831;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.auth-container button[type="submit"]:hover {
+  background-color: #DFD0B8;
+}
+
+/* secondary button */
+.auth-container > button {
+  margin-top: 1rem;
+
+  background: none;
+  border: none;
+
+  color: #948979;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.auth-container > button:hover {
+  color: #DFD0B8;
+}
+
+.auth-container p.error {
+  color: #ff4d4f; /* vermelho */
+  font-weight: bold;
+}

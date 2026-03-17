@@ -12,5 +12,3 @@ export class AppComponent {
   // app title signal
   protected readonly title = signal<string>('movie-manager');
 }
-//teste
-let x = 1

@@ -1,4 +1,4 @@
-[![CI](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml/badge.svg?branch=test%2Fworkflows&event=pull_request)](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml)
+[![CI](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml/badge.svg?branch=develop-idp&event=pull_request)](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml)
 
 # MovieManager
 

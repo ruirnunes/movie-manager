@@ -1,3 +1,5 @@
+[![CI](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml/badge.svg?branch=test-ci&event=pull_request)](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml)
+
 # MovieManager
 
 MovieManager is a Single Page Application (SPA) built with Angular 21 that allows users to manage a personal movie collection. Users can add, edit, and remove movies, track viewing status, mark favorites, and view KPIs for their collection.

@@ -1,62 +1,58 @@
-<div class="auth-container">
+<div class="auth-form">
 
+  <!-- Form title -->
   <h2>{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
 
-  <form (ngSubmit)="submit()">
-
-    <!-- Campo Name (apenas visível no sign-up) -->
-    <div [hidden]="isLoginMode">
-      <label for="name">Name</label>
-      <input
-        id="name"
-        type="text"
-        [(ngModel)]="name"
-        name="name"
-        placeholder="Enter your name"
-      />
-    </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
     <!-- Email -->
-    <div>
+    <div class="form-group">
       <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        [(ngModel)]="email"
-        name="email"
-        placeholder="Enter your email"
-        required
-      />
+      <input id="email" type="email" formControlName="email" placeholder="e.g. name@example.com">
+
+      @if(showEmailRequiredError) {
+        <div class="error">Email is required.</div>
+      }
+
+      @if(showEmailFormatError) {
+        <div class="error">Invalid email format.</div>
+      }
     </div>
 
     <!-- Password -->
-    <div>
+    <div class="form-group">
       <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        [(ngModel)]="password"
-        name="password"
-        placeholder="Enter your password"
-        required
-      />
+      <input id="password" type="password" formControlName="password" placeholder="Minimum 6 characters">
+
+      @if(showPasswordRequiredError) {
+        <div class="error">Password is required.</div>
+      }
+
+      @if(showPasswordMinLengthError) {
+        <div class="error">Password must be at least 6 characters.</div>
+      }
     </div>
 
-    <!-- Botão submit -->
+    <!-- Server error / success -->
+    @if(showServerError) {
+      @if(isError) {
+        <div class="error">{{ errorMessage }}</div>
+      } @else if(isSuccess) {
+        <div class="success">{{ errorMessage }}</div>
+      }
+    }
+
+    <!-- Submit button -->
     <button type="submit">
-      {{ isLoginMode ? 'Login' : 'Create Account' }}
+      {{ isLoginMode ? 'Login' : 'Sign Up' }}
     </button>
 
+    <!-- Toggle login/sign up -->
+    <p class="toggle">
+      <a href="#" (click)="toggleMode(); $event.preventDefault()">
+        {{ isLoginMode ? "Don't have an account? Sign Up" : 'Already have an account? Login' }}
+      </a>
+    </p>
+
   </form>
-
-  <!-- Mensagem de erro ou sucesso -->
-  <p [class.error]="message === 'Credenciais inválidas.' || message === 'Preencha todos os campos.'">
-    {{ message }}
-  </p>
-
-  <!-- Botão para alternar entre login e sign-up -->
-  <button (click)="toggleMode()">
-    {{ isLoginMode ? 'Create an account' : 'Already have an account?' }}
-  </button>
-
 </div>

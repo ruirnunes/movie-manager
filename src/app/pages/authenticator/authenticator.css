@@ -1,5 +1,5 @@
-/* container central */
-.auth-container {
+/* Container central */
+.auth-form {
   max-width: 420px;
   margin: 60px auto;
   padding: 2rem;
@@ -12,30 +12,30 @@
 }
 
 /* title */
-.auth-container h2 {
+.auth-form h2 {
   margin-bottom: 1.5rem;
   color: #DFD0B8;
 }
 
 /* form layout */
-.auth-container form {
+.auth-form form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
 /* labels */
-.auth-container label {
-    font-weight: bold;
-    display: block;
-    text-align: left;
-    font-size: 1.05rem;
-    margin-bottom: 4px;
-    color: #948979;
+.auth-form label {
+  font-weight: bold;
+  display: block;
+  text-align: left;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  color: #948979;
 }
 
 /* inputs */
-.auth-container input {
+.auth-form input {
   width: 95%;
   padding: 10px;
 
@@ -47,13 +47,13 @@
   font-size: 0.95rem;
 }
 
-.auth-container input:focus {
+.auth-form input:focus {
   outline: none;
   border-color: #DFD0B8;
 }
 
-/* main button */
-.auth-container button[type="submit"] {
+/* submit button */
+.auth-form button[type="submit"] {
   margin-top: 0.5rem;
   padding: 10px;
 
@@ -68,27 +68,36 @@
   transition: background 0.2s ease;
 }
 
-.auth-container button[type="submit"]:hover {
+.auth-form button[type="submit"]:hover {
   background-color: #DFD0B8;
 }
 
-/* secondary button */
-.auth-container > button {
-  margin-top: 1rem;
-
-  background: none;
-  border: none;
-
+/* toggle link */
+.auth-form p.toggle a {
   color: #948979;
-  cursor: pointer;
+  text-decoration: none;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
-.auth-container > button:hover {
+.auth-form p.toggle a:hover {
   color: #DFD0B8;
 }
 
-.auth-container p.error {
+/* mensagens de erro */
+.auth-form .error {
   color: #ff4d4f; /* vermelho */
   font-weight: bold;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* mensagens de sucesso */
+.auth-form .success {
+  color: #4CAF50; /* verde */
+  font-weight: bold;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  text-align: left;
 }

@@ -13,7 +13,7 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       API_URL: ${{ secrets.API_URL }}
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
     steps:
       - uses: actions/checkout@v4

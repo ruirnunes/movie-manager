@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, RouterLink, Router, NavigationEnd, Event } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,18 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 })
 
 export class AppComponent {
-  // app title signal
-  protected readonly title = signal<string>('movie-manager');
+  private router = inject(Router);  // inject() em vez de constructor
+  showNavbar = true;
+
+  constructor() {
+    // escuta mudanças de rota
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: Event) => {
+        if (event instanceof NavigationEnd) {
+          // esconde navbar se estiver na página de login/sign up
+          this.showNavbar = !(event.url === '/' || event.url === '/auth');
+        }
+      });
+  }
 }

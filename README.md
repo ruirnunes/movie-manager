@@ -1,3 +1,5 @@
+[![CI](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml/badge.svg?branch=test-ci&event=pull_request)](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml)
+
 # MovieManager
 
 MovieManager is a Single Page Application (SPA) built with Angular that allows users to manage a personal movie collection with authentication, movie tracking, and statistics.
@@ -106,7 +108,7 @@ Deployed on :contentReference[oaicite:1]{index=1} with automatic builds on push.
 ## Additional Resources
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page...
 
 ## Notes
 

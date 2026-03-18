@@ -33,7 +33,7 @@ jobs:
           cat > src/environments/environment.development.ts <<EOF
           export const environment = {
             production: true,
-            apiUrl: '${API_URL}'
+            apiUrl: '${API_URL}',
             supabaseUrl: '${SUPABASE_URL}',
             supabaseKey: '${SUPABASE_KEY}'
           };

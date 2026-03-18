@@ -1,61 +1,64 @@
 # MovieManager
 
-MovieManager is a Single Page Application (SPA) built with Angular 21 that allows users to manage a personal movie collection. Users can add, edit, and remove movies, track viewing status, mark favorites, and view KPIs for their collection.
+MovieManager is a Single Page Application (SPA) built with Angular that allows users to manage a personal movie collection with authentication, movie tracking, and statistics.
 
-## Project Description
-
-The goal of this project is to consolidate skills in JavaScript, TypeScript, and Angular, demonstrating a functional SPA with clean architecture, strict typing, reusable components, and state management. The chosen theme is Movie/Series Catalog, enabling users to manage a personal watchlist with ratings, favorites, and statistics.
+---
 
 ## Features
 
-- **Dashboard with KPIs**:
-  - Total movies
-  - Movies watched, to watch, watching, and skipped
-  - Average rating
-  - Top 3 favorite movies by rating (displayed as cards)
-- **Movie List**:
-  - Filter movies by genre
-  - Search movies by title
-  - Sort movies by rating
-- **Movie Details**:
-  - View detailed information for each movie
-  - Toggle favorite status
-  - Update viewing status (To Watch, Watching, Watched, Skipped)
-- **Watchlist & Watched List**:
-  - Separate pages for movies to watch and movies already watched
-  - Move movies between lists by changing status
-- **Data Persistence**:
-  - All data is stored in LocalStorage
-  - Example movies preloaded on first run
-- **Component-based Architecture**:
-  - MovieCardComponent for displaying movie info
-  - KpiCardComponent for dashboard metrics
+- Authentication with Supabase  
+- Add, edit, and delete movies  
+- Mark favorites  
+- Dashboard with KPIs (total movies, status, average rating)  
+- Search, filter, and sort movies  
+- Watchlist and watched lists  
 
-## Installation
+---
 
-Clone the repository:
+## How to Use
+
+1. Go to the **Dashboard** to view KPIs and top favorite movies.
+2. Access the **Movie List** to browse, filter, search, or sort movies.
+3. Click a movie to open **Movie Details** and update status or mark as favorite.
+4. Visit **Watchlist** and **Watched List** pages to track your movies.
+
+---
+
+## Run with Docker
+
+### 1. Clone
 
 ```bash
-git clone https://github.com/ruirnunes/movie-manager.git
-cd movie-manager
+git clone https://github.com/ruirnunes/movie-manager.git 
+cd movie-manager 
 ```
 
-Install dependencies:
+### 2. Create `.env`
+
+```bash 
+API_URL=http://localhost:3001
+SUPABASE_URL=your_supabase_url 
+SUPABASE_KEY=your_supabase_anon_key 
+```
+
+### 3. Run
 
 ```bash
+docker-compose up --build 
+```
+
+App: http://localhost:4200  
+
+---
+
+## Run without Docker
+
+```bash 
 npm install
+ng serve --open
 ```
 
-## Running the Application
-
-Start the development server:
-
-```bash
-ng serve
-```
-
-Open your browser at `http://localhost:4200/`.  
-The application reloads automatically whenever source files are modified.
+---
 
 ## Project Structure
 
@@ -65,21 +68,53 @@ The application reloads automatically whenever source files are modified.
 - `src/app/pages/` – Main pages (Dashboard, Favorites, Movie details, Movie Form Movie List, Watchlist, Watched List)
 - `src/app/pipes/` – Custom pipe (date formatting)
 
-## How to Use
+---
 
-1. Go to the **Dashboard** to view KPIs and top favorite movies.
-2. Access the **Movie List** to browse, filter, search, or sort movies.
-3. Click a movie to open **Movie Details** and update status or mark as favorite.
-4. Visit **Watchlist** and **Watched List** pages to track your movies.
+## Tech Stack
 
-## Technologies Used
+- Frontend: Angular  
+- Backend: Node.js (REST API)  
+- Database & Auth: Supabase  
+- CI/CD: GitHub Actions  
+- Deployment: Vercel  
+- Containerization: Docker  
 
-- Angular 21
-- TypeScript
-- LocalStorage for data persistence
+---
+
+## CI/CD
+
+Uses :contentReference[oaicite:0]{index=0} for:
+- Build and lint  
+- Runs on Pull Requests (`develop-idp`)  
+
+---
+
+## Deployment
+
+Deployed on :contentReference[oaicite:1]{index=1} with automatic builds on push.
+
+---
+
+## Branches
+
+- `main` → production  
+- `develop-idp` → development  
+- feature branches → PR → merge → deploy  
+
+---
 
 ## Additional Resources
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+## Notes
+
+- `environments/` is ignored  
+- Environment variables are managed via `.env`, GitHub Secrets, and Vercel  
+
+---
+
+## Author
+
+Rui Nunes

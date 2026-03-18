@@ -79,14 +79,14 @@ ng serve --open
 
 ## CI/CD
 
-Uses :contentReference[oaicite:0]{index=0} for:
+Uses GitHub Actions for:
 - Build and lint  
 - Runs on Pull Requests (`develop-idp`)  
 
 
 ## Deployment
 
-Deployed on :contentReference[oaicite:1]{index=1} with automatic builds on push.
+Deployed on Vercel with automatic builds on push.
 
 
 ## Branches
@@ -96,15 +96,16 @@ Deployed on :contentReference[oaicite:1]{index=1} with automatic builds on push.
 - feature branches → PR → merge → deploy  
 
 
-## Additional Resources
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
 ## Notes
 
 - `environments/` is ignored  
 - Environment variables are managed via `.env`, GitHub Secrets, and Vercel  
+
+
+## Additional Resources
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 
 ## Author

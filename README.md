@@ -1,8 +1,9 @@
+[![CI](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml/badge.svg?branch=test-ci&event=pull_request)](https://github.com/ruirnunes/movie-manager/actions/workflows/ci.yml)
+
 # MovieManager
 
 MovieManager is a Single Page Application (SPA) built with Angular that allows users to manage a personal movie collection with authentication, movie tracking, and statistics.
 
----
 
 ## Features
 
@@ -13,7 +14,6 @@ MovieManager is a Single Page Application (SPA) built with Angular that allows u
 - Search, filter, and sort movies  
 - Watchlist and watched lists  
 
----
 
 ## How to Use
 
@@ -22,7 +22,6 @@ MovieManager is a Single Page Application (SPA) built with Angular that allows u
 3. Click a movie to open **Movie Details** and update status or mark as favorite.
 4. Visit **Watchlist** and **Watched List** pages to track your movies.
 
----
 
 ## Run with Docker
 
@@ -58,7 +57,6 @@ npm install
 ng serve --open
 ```
 
----
 
 ## Project Structure
 
@@ -68,7 +66,6 @@ ng serve --open
 - `src/app/pages/` – Main pages (Dashboard, Favorites, Movie details, Movie Form Movie List, Watchlist, Watched List)
 - `src/app/pipes/` – Custom pipe (date formatting)
 
----
 
 ## Tech Stack
 
@@ -79,7 +76,6 @@ ng serve --open
 - Deployment: Vercel  
 - Containerization: Docker  
 
----
 
 ## CI/CD
 
@@ -87,13 +83,11 @@ Uses :contentReference[oaicite:0]{index=0} for:
 - Build and lint  
 - Runs on Pull Requests (`develop-idp`)  
 
----
 
 ## Deployment
 
 Deployed on :contentReference[oaicite:1]{index=1} with automatic builds on push.
 
----
 
 ## Branches
 
@@ -101,7 +95,6 @@ Deployed on :contentReference[oaicite:1]{index=1} with automatic builds on push.
 - `develop-idp` → development  
 - feature branches → PR → merge → deploy  
 
----
 
 ## Additional Resources
 
@@ -113,7 +106,6 @@ For more information on using the Angular CLI, including detailed command refere
 - `environments/` is ignored  
 - Environment variables are managed via `.env`, GitHub Secrets, and Vercel  
 
----
 
 ## Author
 

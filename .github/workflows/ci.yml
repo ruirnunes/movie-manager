@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       API_URL: ${{ secrets.API_URL }}
-      # SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      # SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
     steps:
       - name: Checkout do código
         uses: actions/checkout@v5

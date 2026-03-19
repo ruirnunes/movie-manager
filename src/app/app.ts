@@ -25,3 +25,5 @@ export class AppComponent {
       });
   }
 }
+
+let x = 1
